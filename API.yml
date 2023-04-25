@@ -560,6 +560,50 @@ Body :
 
 # Post :
 
+Endpoint : categ/:id:nom:description/
+Method : Post
+Description : ajouter une nouvelle catégorie dans la table catégorie.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 201
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 5,
+        "nom": "cinquiéme catégorie",
+        "description": "robes soirées"
+   }
+]
+
+Endpoint : collections/:id:nom:description/
+Method : Post
+Description : ajouter une nouvelle collection  dans la table collections.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 201
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 10 ,
+        "nom": "une collection d'essai",
+        "description": "3eme collection"
+    }
+]
+
+
+
 
 
 # Put/Patch :
@@ -568,68 +612,62 @@ Body :
 
 # Delete :
 
-endpoint: /client/:id
-  method: DELETE
-  description: supprimer un compte client
-  request: 
-    Headers:
+Endpoint : /categ/
+Method : DELETE
+Description : supprimer la table catégorie.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
 
-  responses:
-    success:
-      code: 200
-
-
-endpoint: collection/:id:nom:date
-  method: DELETE
-  description: supprimer une collection
-  request: 
-    Headers:
-
-  responses:
-    success:
-      code: 200
+Responses :
+Success :
+Code : 204
 
 
-endpoint: categorie/:id:nom:date
-  method: DELETE
-  description: supprimer une catégorie
-  request: 
-    Headers:
 
-  responses:
-    success:
-      code: 200
+Endpoint : /collections/
+Method : DELETE
+Description : supprimer la table catégorie.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
 
-
-endpoint: produit/:id:nom:date
-  method: DELETE
-  description: supprimer un produit
-  request: 
-    Headers:
-
-  responses:
-    success:
-      code: 200
+Responses :
+Success :
+Code : 204
 
 
-endpoint: commande/:id:nom:date
-  method: DELETE
-  description: supprimer une commande
-  request: 
-    Headers:
+Responses :
+Success :
+Code : 204
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 5,
+        "nom": "cinquiéme catégorie",
+        "description": "robes soirées"
+   }
+]
 
-  responses:
-    success:
-      code: 200
 
 
-endpoint: avis/:id:date
-  method: DELETE
-  description: supprimer un avis
-  request: 
-    Headers:
+Endpoint : /prod?prix=100/
+Method : Post
+Description : supprimer des produits d'un prix spécifique.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
 
-  responses:
-    success:
-      code: 200
+Responses :
+Success :
+Code : 404
+Content-Type : application/json
+Body :
+{
+        Cannot DELETE /prod
+   }
 
