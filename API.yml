@@ -1,32 +1,4 @@
-# Get : 
-
-Endpoint : /client/:id
-Method : GET
-Description : Rechercher un client dans la base de données en utilisant son ID.
-Request :
-Headers :
-- Content-Type : application/json
-- Authorization : Bearer <token>
-
-Responses :
-Success :
-Code : 200
-Content-Type : application/json
-Body :
-{
-"id": 123,
-"name": "John Doe",
-"email": "johndoe@example.com",
-"phone": "+1 555-555-5555"
-}
-Error :
-Code : 404
-Content-Type : application/json
-Body :
-{
-"error": "Client not found"
-}
-
+#Catégorie
 
 Endpoint : /categories/
 Method : GET
@@ -67,6 +39,72 @@ Body :
 }
 
 
+Endpoint : categ/:id:nom:description/
+Method : Post
+Description : ajouter une nouvelle catégorie dans la table catégorie.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 201
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 5,
+        "nom": "cinquiéme catégorie",
+        "description": "robes soirées"
+   }
+]
+
+Endpoint : /categ/
+Method : DELETE
+Description : supprimer la table catégorie.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 204
+
+#Clients
+
+Endpoint : /client/:id
+Method : GET
+Description : Rechercher un client dans la base de données en utilisant son ID.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 200
+Content-Type : application/json
+Body :
+{
+"id": 123,
+"name": "John Doe",
+"email": "johndoe@example.com",
+"phone": "+1 555-555-5555"
+}
+Error :
+Code : 404
+Content-Type : application/json
+Body :
+{
+"error": "Client not found"
+}
+
+
+
+#Collections
+
 Endpoint : /collections/
 Method : GET
 Description : consulter la liste de toutes les collections.
@@ -105,6 +143,56 @@ Body :
 "error": "Collections not found"
 }
 
+
+
+Endpoint : collections/:id:nom:description/
+Method : Post
+Description : ajouter une nouvelle collection  dans la table collections.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 201
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 10 ,
+        "nom": "une collection d'essai",
+        "description": "3eme collection"
+    }
+]
+
+Endpoint : /collections/
+Method : DELETE
+Description : supprimer la table des collections.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 204
+
+
+Responses :
+Success :
+Code : 204
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 5,
+        "nom": "cinquiéme catégorie",
+        "description": "robes soirées"
+   }
+]
+
+#Photocreations
 
 Endpoint : /photocreations/
 Method : GET
@@ -160,6 +248,7 @@ Body :
 }
 
 
+#PhotoEvents
 
 Endpoint : /photoevents/
 Method : GET
@@ -220,7 +309,7 @@ Body :
 "error": "photoevents not found"
 }
 
-
+#Produits
 
 Endpoint : /prod/
 Method : GET
@@ -475,7 +564,7 @@ Body :
 }
 
 
-Endpoint : /http://localhost:3000/prod?prix=100/
+Endpoint : /prod?prix=100/
 Method : GET
 Description : consulter la liste des produits d'un prix spécifique .
 Request :
@@ -558,104 +647,9 @@ Body :
 "error": "prod not found"
 }   
 
-# Post :
-
-Endpoint : categ/:id:nom:description/
-Method : Post
-Description : ajouter une nouvelle catégorie dans la table catégorie.
-Request :
-Headers :
-- Content-Type : application/json
-- Authorization : Bearer <token>
-
-Responses :
-Success :
-Code : 201
-Content-Type : application/json
-Body :
-[
-    {
-        "id": 5,
-        "nom": "cinquiéme catégorie",
-        "description": "robes soirées"
-   }
-]
-
-Endpoint : collections/:id:nom:description/
-Method : Post
-Description : ajouter une nouvelle collection  dans la table collections.
-Request :
-Headers :
-- Content-Type : application/json
-- Authorization : Bearer <token>
-
-Responses :
-Success :
-Code : 201
-Content-Type : application/json
-Body :
-[
-    {
-        "id": 10 ,
-        "nom": "une collection d'essai",
-        "description": "3eme collection"
-    }
-]
-
-
-
-
-
-# Put/Patch :
-
-
-
-# Delete :
-
-Endpoint : /categ/
-Method : DELETE
-Description : supprimer la table catégorie.
-Request :
-Headers :
-- Content-Type : application/json
-- Authorization : Bearer <token>
-
-Responses :
-Success :
-Code : 204
-
-
-
-Endpoint : /collections/
-Method : DELETE
-Description : supprimer la table catégorie.
-Request :
-Headers :
-- Content-Type : application/json
-- Authorization : Bearer <token>
-
-Responses :
-Success :
-Code : 204
-
-
-Responses :
-Success :
-Code : 204
-Content-Type : application/json
-Body :
-[
-    {
-        "id": 5,
-        "nom": "cinquiéme catégorie",
-        "description": "robes soirées"
-   }
-]
-
-
 
 Endpoint : /prod?prix=100/
-Method : Post
+Method : DELETE
 Description : supprimer des produits d'un prix spécifique.
 Request :
 Headers :
@@ -670,4 +664,3 @@ Body :
 {
         Cannot DELETE /prod
    }
-
