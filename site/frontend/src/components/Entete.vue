@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="entete">
-      <img id="logo1" class="image" src="logo1.png" alt="logo">
+      <router-link to="/" class="no-underline"><img id="logo1" class="image" src="logo1.png" alt="logo"></router-link>
       <nav class="navbar">
         <ul class="nav-list">
           <li ><router-link to="/" class="no-underline">Accueil</router-link></li>
