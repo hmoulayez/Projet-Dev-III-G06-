@@ -10,6 +10,10 @@ const cors = require('cors');
 
 app.use(bodyParser.json());
 
+const avisRoutes = require('./routes/avis');
+
+const clientsRoutes = require('./routes/clients');
+
 const eventRoutes = require('./routes/photoevents');
 
 const creationsRoutes = require('./routes/photocreations');
@@ -48,11 +52,15 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 //Différents appels API
+app.use('/avis', avisRoutes);
+app.use('/categ', categRoutes);
+app.use('/clients', clientsRoutes);
+app.use('/collections',collectionsRoutes);
 app.use('/photoevents', eventRoutes);
 app.use('/photocreations',creationsRoutes);
-app.use('/collections',collectionsRoutes);
-app.use('/categ', categRoutes);
-app.use('/prod', prodRoutes)
+app.use('/prod', prodRoutes);
+
+
 
 app.use(express.json());
 module.exports = app;
