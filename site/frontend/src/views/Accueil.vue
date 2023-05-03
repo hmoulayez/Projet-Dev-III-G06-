@@ -22,8 +22,8 @@
       <div id="kabodium">
         <h1 id="titre-event">Kabori sur un podium</h1>
         <v-carousel v-model="model1" show-arrows="hover" cycle hide-delimiter-background>
-          <v-carousel-item v-for="photo in photoevent" :value="photo.id"  :key="photo.id">
-            <v-img :src="photo.url" />
+          <v-carousel-item v-for="photo in photoevent" :value="photo.id"  :key="photo.id" >
+            <v-img :src="photo.url"  />
           </v-carousel-item>
         </v-carousel>
       </div>
@@ -161,6 +161,10 @@ export default {
   text-align: center;
   font-family: "Cambria Math";
   color: black;
+}
+
+.kaborimage {
+  background-color: #000000;
 }
 
 </style>
