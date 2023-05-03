@@ -55,6 +55,12 @@ const routes= [
     component: () =>
         import('../views/Cookies.vue')
   },
+  {
+    path: '/modifcatalogue',
+    name: 'ModifCatalogue',
+    component: () =>
+        import('../views/ModifCatalogue.vue')
+  },
 
 ]
 const router = createRouter({
