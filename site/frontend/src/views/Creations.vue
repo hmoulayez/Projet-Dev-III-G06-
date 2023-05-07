@@ -1,4 +1,5 @@
 <template>
+  <v-app>
   <header><Entete/></header>
 
   <main >
@@ -68,6 +69,7 @@
   </main>
 
   <footer><BasDePage/></footer>
+  </v-app>
 </template>
 
 <script>

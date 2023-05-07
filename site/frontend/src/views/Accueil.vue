@@ -20,7 +20,7 @@
     </div>
     <div class="kaborimage">
       <div id="kabodium">
-        <h1 id="titre-event">Kabori sur un podium</h1>
+        <h1 class="titre-event">Kabori sur un podium</h1>
         <v-carousel v-model="model1" show-arrows="hover" cycle hide-delimiter-background>
           <v-carousel-item v-for="photo in photoevent" :value="photo.id"  :key="photo.id" >
             <v-img :src="photo.url"  />
@@ -28,7 +28,7 @@
         </v-carousel>
       </div>
       <div id="kaborcreation">
-        <h1 id="titre-event">Nos créations</h1>
+        <h1 class="titre-event">Nos créations</h1>
         <v-carousel v-model="model2" show-arrows="hover" cycle hide-delimiter-background>
           <v-carousel-item v-for="photo in photocreations" :value="photo.id"  :key="photo.id">
             <v-img :src="photo.url" />
@@ -157,10 +157,10 @@ export default {
   font-family: "Cambria Math";
 }
 
-#titre-event{
+.titre-event{
   text-align: center;
   font-family: "Cambria Math";
-  color: black;
+  color: white;
 }
 
 .kaborimage {
