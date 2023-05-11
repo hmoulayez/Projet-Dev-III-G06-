@@ -1,4 +1,5 @@
 <template>
+  <v-app>
   <header><Entete/></header>
 
   <main >
@@ -19,38 +20,34 @@
 
                 <v-card-actions>
                   <v-btn
-                      class="ms-2 boutonCollection"
+                      class="ms-2"
                       variant="outlined"
                       size="small"
                       @click="thisCollection = collection.nom, recupModels(collection.nom);"
-                      @dblclick="thisCollection = ''"
-                      data-test="boutonCollection"
-                  >
+                      @dblclick="thisCollection = ''">
                     Voir les modèles de cette collection
                   </v-btn>
                 </v-card-actions>
 
               </div>
               <div>
-                <v-avatar class="ma-3" size="200" rounded="0"><v-img  src="model1.jpeg" data-test="avatar1"></v-img></v-avatar>
-                <v-avatar class="ma-3" size="200" rounded="0"><v-img  src="model2.jpeg" data-test="avatar2"></v-img></v-avatar>
+                <v-avatar class="ma-3" size="200" rounded="0"><v-img  src="model1.jpeg"></v-img></v-avatar>
+                <v-avatar class="ma-3" size="200" rounded="0"><v-img  src="model2.jpeg"></v-img></v-avatar>
               </div>
 
             </div>
             <div v-if="thisCollection === collection.nom">
-              <v-card color="" class="">
-              <v-card class="model" v-for="model in models" v-bind:key="model.id"  color="grey" >
-
-                <v-card-title >{{model.nom}} {{this.recuPhoto(model)}}</v-card-title>
-                <v-card-text class="descModel">
+              <div class="model" v-for="model in models" v-bind:key="model.id" >
+                <h2 >{{model.nom}} {{this.recuPhoto(model)}}</h2>
+                <p class="descModel">
                   {{model.description}}
-                </v-card-text><br>
+                </p><br>
                 <div class="imgModel">
-
                   <div class="photo" v-for="photo in photos.slice(2,6)"  :key="photo.id" >
                     <button @click="overlay = !overlay; overlayImg=photo" >
                       <img :src=photo alt="image1"/>
                     </button>
+
                     <v-overlay v-if="overlay" v-model="overlay"  class="overlay">
                       <button @click="overlay = !overlay">
                         <img :src=overlayImg alt="image1" class="overlayImg"/>
@@ -59,10 +56,8 @@
 
                   </div>
                 </div>
-                <span class="prix">{{model.prix}}€</span>
-                <v-btn color="success">Ajouter au panier</v-btn>
-              </v-card>
-              </v-card>
+                <p class="prix">{{model.prix}}€</p>
+              </div>
             </div>
           </v-card>
 
@@ -74,6 +69,7 @@
   </main>
 
   <footer><BasDePage/></footer>
+  </v-app>
 </template>
 
 <script>
@@ -154,8 +150,6 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 5%;
-  margin: 5%;
 }
 .descModel{
   display: flex;
@@ -169,8 +163,8 @@ h1,h2, p {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .imgModel{

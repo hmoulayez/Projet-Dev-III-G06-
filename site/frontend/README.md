@@ -31,13 +31,13 @@ npm run build
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-npm run tests:unit
+npm run test:unit
 ```
 
 ### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
 ```sh
-npm run tests:e2e:dev
+npm run test:e2e:dev
 ```
 
 This runs the end-to-end tests against the Vite development server.
@@ -47,7 +47,7 @@ But it's still recommended to test the production build with `test:e2e` before d
 
 ```sh
 npm run build
-npm run tests:e2e
+npm run test:e2e
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
