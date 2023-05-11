@@ -10,6 +10,9 @@
 
 export default {
   name: 'App',
+  props: {
+    vuetify: Object,
+  },
   components : {
   }
 }

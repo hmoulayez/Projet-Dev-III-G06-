@@ -164,7 +164,6 @@ export default {
 }
 
 .kaborimage {
-  background-color: #000000;
 }
 
 </style>
