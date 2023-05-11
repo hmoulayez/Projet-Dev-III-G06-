@@ -39,7 +39,7 @@ Body :
 }
 
 
-Endpoint : categ/:id:nom:description/
+Endpoint : categ?id=x?nom=y?description=z/
 Method : Post
 Description : ajouter une nouvelle catégorie dans la table catégorie.
 Request :
