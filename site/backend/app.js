@@ -8,7 +8,7 @@ const mysql = require('mysql');
 
 const cors = require('cors');
 
-app.use(bodyParser.json());
+const path = require('path');
 
 const avisRoutes = require('./routes/avis');
 
@@ -23,6 +23,13 @@ const collectionsRoutes = require('./routes/collections');
 const categRoutes = require('./routes/categ');
 
 const prodRoutes = require('./routes/produits');
+const contactRoutes = require('./routes/contact');
+
+
+//app.use(contactRouter);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 
 const con = mysql.createConnection({
@@ -56,11 +63,19 @@ app.use('/avis', avisRoutes);
 app.use('/categ', categRoutes);
 app.use('/clients', clientsRoutes);
 app.use('/collections',collectionsRoutes);
+app.use('/contact', contactRoutes);
 app.use('/photoevents', eventRoutes);
 app.use('/photocreations',creationsRoutes);
 app.use('/prod', prodRoutes);
 
 
 
+
 app.use(express.json());
 module.exports = app;
+
+
+
+
+
+
