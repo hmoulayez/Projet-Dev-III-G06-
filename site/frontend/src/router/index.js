@@ -14,6 +14,18 @@ const routes= [
         import('../views/Creations.vue')
   },
   {
+    path: '/connexion',
+    name: 'Connexion',
+    component: () =>
+        import('../views/Connexion.vue')
+  },
+  {
+    path: '/devis',
+    name: 'Devis',
+    component: () =>
+        import('../views/Devis.vue')
+  },
+  {
     path: '/services',
     name: 'Services',
     component: () =>
