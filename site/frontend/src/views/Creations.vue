@@ -16,7 +16,7 @@
                   {{collection.nom}}
                 </v-card-title>
 
-                <v-card-subtitle>{{ collection.description }}</v-card-subtitle>
+                <p>{{ collection.description }}</p>
 
                 <v-card-actions>
                   <v-btn
@@ -30,10 +30,6 @@
                 </v-card-actions>
 
               </div>
-              <div>
-                <v-avatar class="ma-3" size="200" rounded="0"><v-img  src="model1.jpeg"></v-img></v-avatar>
-                <v-avatar class="ma-3" size="200" rounded="0"><v-img  src="model2.jpeg"></v-img></v-avatar>
-              </div>
 
             </div>
             <div v-if="thisCollection === collection.nom">
@@ -43,7 +39,7 @@
                   {{model.description}}
                 </p><br>
                 <div class="imgModel">
-                  <div class="photo" v-for="photo in photos.slice(2,6)"  :key="photo.id" >
+                  <div class="photo" v-for="photo in photos.slice(2,7)"  :key="photo.id" >
                     <button @click="overlay = !overlay; overlayImg=photo" >
                       <img :src=photo alt="image1"/>
                     </button>
