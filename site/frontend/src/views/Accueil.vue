@@ -158,7 +158,7 @@ export default {
 }
 
 .kaborimage {
-  background-image: url("bckrndAccueil.jpeg");
+  background-image: url("./bckrndAccueil.jpeg");
   background-size: 100%;
   color: black;
   margin: 5%

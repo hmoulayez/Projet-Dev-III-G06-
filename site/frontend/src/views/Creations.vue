@@ -167,15 +167,20 @@ h1,h2, p {
 
 .imgModel{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 50%;
-
-
+}
+.imgModel:first-child{
+  grid-column: 1 ;
+  grid-row: 1 / span 2;
+}
+.imgModel:nth-child(2) {
+  grid-column: 2 ;
+  grid-row: 1 ;
 }
 
 .imgModel img{
