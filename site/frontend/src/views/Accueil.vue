@@ -57,12 +57,6 @@ export default {
       overlay: false,
       overlayImg:"",
       photocreations:[],
-      images2: [
-        { id: 1, url: 'model4.jpeg' },
-        { id: 2, url: 'model3.jpeg' },
-        { id: 3, url: 'model2.jpeg' },
-        { id: 4, url: 'model1.jpeg' }
-      ],
       model2: 2,
     }
   },
@@ -160,11 +154,14 @@ export default {
 .titre-event{
   text-align: center;
   font-family: "Cambria Math";
-  color: white;
+  color: black;
 }
 
 .kaborimage {
-  background-color: #000000;
+  background-image: url("bckrndAccueil.jpeg");
+  background-size: 100%;
+  color: black;
+  margin: 5%
 }
 
 </style>
