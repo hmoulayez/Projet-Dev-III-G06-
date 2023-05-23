@@ -74,12 +74,15 @@ const routes= [
     component: () =>
         import('../views/ModifCatalogue.vue')
   },
+<<<<<<< HEAD
   {
     path: '/:catchAll(.*)',
     name: 'Notfound',
     component: () =>
         import('../views/NotFound.vue')
   },
+=======
+>>>>>>> contact
 
 ]
 const router = createRouter({

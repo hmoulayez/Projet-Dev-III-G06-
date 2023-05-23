@@ -6,16 +6,16 @@
     <v-parallax id="model3" src="model3.jpeg"  alt="photo page d'accueil"  class="pr-img contain"></v-parallax>
     <div class="pr-text">
       <div data-aos="flip-left" class="pr-text1">KABORI CREATIONS <br>
-          Robes d'événements sur-mesure <br>
-          BRUXELLES <br>
+        Robes d'événements sur-mesure <br>
+        BRUXELLES <br>
       </div>
       <div data-aos="flip-left" class="pr-text2" >
-          KABORI CREATIONS a pour ambition de vous accompagner lors d'événements importants:<br>
-          mariages, soirées, gala, cocktails, baptêmes, anniversaires, tapis rouge etc.
-          Je souhaite vous faire<br>
-          vivre un moment inoubliable en vous proposant des créations authentiques ou en créant avec vous<br>
-          et pour vous des pièces uniques et sur-mesure. Du croquis à la réalisation finale en passant par le<br>
-          patron, je collabore étroitement avec des artisans belges pour vous proposer des pièces raffinées et<br> travaillées.
+        KABORI CREATIONS a pour ambition de vous accompagner lors d'événements importants:<br>
+        mariages, soirées, gala, cocktails, baptêmes, anniversaires, tapis rouge etc.
+        Je souhaite vous faire<br>
+        vivre un moment inoubliable en vous proposant des créations authentiques ou en créant avec vous<br>
+        et pour vous des pièces uniques et sur-mesure. Du croquis à la réalisation finale en passant par le<br>
+        patron, je collabore étroitement avec des artisans belges pour vous proposer des pièces raffinées et<br> travaillées.
       </div>
     </div>
     <div class="kaborimage">
@@ -158,7 +158,7 @@ export default {
 }
 
 .kaborimage {
-  background-image: url("./bckrndAccueil.jpeg");
+  background-image: url("bckrndAccueil.jpeg");
   background-size: 100%;
   color: black;
   margin: 5%

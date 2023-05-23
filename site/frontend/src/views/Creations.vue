@@ -1,72 +1,72 @@
 <template>
   <v-app>
-  <header><Entete/></header>
+    <header><Entete/></header>
 
-  <main >
-    <v-container v-for="collection in collections" >
-      <v-row dense>
-        <v-col cols="12">
-          <v-card
-              color=""
-              theme="dark"
-          >
-            <div class="d-flex flex-no-wrap justify-space-between">
-              <div>
-                <v-card-title class="text-h5">
-                  {{collection.nom}}
-                </v-card-title>
+    <main >
+      <v-container v-for="collection in collections" >
+        <v-row dense>
+          <v-col cols="12">
+            <v-card
+                color=""
+                theme="dark"
+            >
+              <div class="d-flex flex-no-wrap justify-space-between">
+                <div>
+                  <v-card-title class="text-h5">
+                    {{collection.nom}}
+                  </v-card-title>
 
-                <p>{{ collection.description }}</p>
+                  <p>{{ collection.description }}</p>
 
-                <v-card-actions>
-                  <v-btn
-                      class="ms-2"
-                      variant="outlined"
-                      size="small"
-                      @click="thisCollection = collection.nom, recupModels(collection.nom);"
-                      @dblclick="thisCollection = ''">
-                    Voir les modèles de cette collection
-                  </v-btn>
-                </v-card-actions>
+                  <v-card-actions>
+                    <v-btn
+                        class="ms-2"
+                        variant="outlined"
+                        size="small"
+                        @click="thisCollection = collection.nom, recupModels(collection.nom);"
+                        @dblclick="thisCollection = ''">
+                      Voir les modèles de cette collection
+                    </v-btn>
+                  </v-card-actions>
+
+                </div>
 
               </div>
-
-            </div>
-            <div v-if="thisCollection === collection.nom">
-              <v-card class="model" v-for="model in models" v-bind:key="model.id" >
-                <h2 >{{model.nom}} {{this.recuPhoto(model)}}</h2>
-                <p class="descModel">
-                  {{model.description}}
-                </p><br>
-                <div class="imgModel">
-                  <div class="photo" v-for="photo in photos.slice(2,7)"  :key="photo.id" >
-                    <button @click="overlay = !overlay; overlayImg=photo" >
-                      <img :src=photo alt="image1"/>
-                    </button>
-
-                    <v-overlay v-if="overlay" v-model="overlay"  class="overlay">
-                      <button @click="overlay = !overlay">
-                        <img :src=overlayImg alt="image1" class="overlayImg"/>
+              <div v-if="thisCollection === collection.nom">
+                <v-card class="model" v-for="model in models" v-bind:key="model.id" >
+                  <h2 >{{model.nom}} {{this.recuPhoto(model)}}</h2>
+                  <p class="descModel">
+                    {{model.description}}
+                  </p><br>
+                  <div class="imgModel">
+                    <div class="photo" v-for="photo in photos.slice(2,7)"  :key="photo.id" >
+                      <button @click="overlay = !overlay; overlayImg=photo" >
+                        <img :src=photo alt="image1"/>
                       </button>
-                    </v-overlay>
 
+                      <v-overlay v-if="overlay" v-model="overlay"  class="overlay">
+                        <button @click="overlay = !overlay">
+                          <img :src=overlayImg alt="image1" class="overlayImg"/>
+                        </button>
+                      </v-overlay>
+
+                    </div>
                   </div>
-                </div>
-                <router-link to="/devis" class="no-underline">
-                  <v-btn color="yellow darken-2" >Demander un devis</v-btn>
-                </router-link>
-              </v-card>
-            </div>
-          </v-card>
+                  <router-link to="/devis" class="no-underline">
+                    <v-btn color="yellow darken-2" >Demander un devis</v-btn>
+                  </router-link>
+                </v-card>
+              </div>
+            </v-card>
 
-        </v-col>
+          </v-col>
 
-      </v-row>
+        </v-row>
 
-    </v-container>
-  </main>
+      </v-container>
+    </main>
 
-  <footer><BasDePage/></footer>
+    <footer><BasDePage/></footer>
   </v-app>
 </template>
 
@@ -167,20 +167,15 @@ h1,h2, p {
 
 .imgModel{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 50%;
-}
-.imgModel:first-child{
-  grid-column: 1 ;
-  grid-row: 1 / span 2;
-}
-.imgModel:nth-child(2) {
-  grid-column: 2 ;
-  grid-row: 1 ;
+
+
 }
 
 .imgModel img{
