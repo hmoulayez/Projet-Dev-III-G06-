@@ -9,33 +9,49 @@
       <form @submit.prevent="submitForm" class="form-container">
         <p>
           Choisissez une collection
-        <select v-model="selectedOption" class="custom-select">
-          <option v-for="option in options" :key="option.value" :value="option.value">{{ option.label }}</option>
-        </select>
+          <select v-model="selectedCollection" class="custom-select">
+            <option v-for="collection in collections" :key="collection.id" :value="collection.nom">{{ collection.nom }}</option>
+          </select>
           <br>
           OU
           <br>
-        <button @click="addOption" class="option-button">Ajoutez</button>
+          <button @click="addCollection" class="option-button">Ajoutez</button>
         </p>
-        <!-- <p>Vous avez choisi l'option : {{ selectedOptionLabel }}</p> -->
+        <br>
+        <p>
+          Choisissez une catégorie
+          <select v-model="selectedCateg" class="custom-select">
+            <option v-for="categorie in categ" :key="categorie.id" :value="categorie.nom">{{ categorie.nom }}</option>
+          </select>
+          <br>
+          OU
+          <br>
+          <button @click="addCateg" class="option-button">Ajoutez</button>
+        </p>
         <br>
         <label for="model">Nom model :</label>
         <input type="text" id="model" v-model="model" class="form-input">
         <br>
         <label>Description :</label>
-        <textarea id="description" v-model="description" class="form-text"></textarea>
+        <textarea id="nouveldescription" v-model="nouveldescription" class="form-text"></textarea>
         <br>
-        <label for="photo">Photo :</label>
-        <input type="file" id="photo" @change="handlePhotoChange" class="form-input">
+        <label for="photoUrl1">Photo 1 :</label>
+        <input type="text" id="photoUrl1" v-model="photoUrl1" placeholder="URL de la photo" class="form-input">
+        <br>
+        <label for="photoUrl2">Photo 2 :</label>
+        <input type="text" id="photoUrl2" v-model="photoUrl2" placeholder="URL de la photo" class="form-input">
+        <br>
+        <label for="photoUrl3">Photo 3 :</label>
+        <input type="text" id="photoUrl3" v-model="photoUrl3" placeholder="URL de la photo" class="form-input">
+        <br>
+        <label for="photoUrl4">Photo 4 :</label>
+        <input type="text" id="photoUrl4" v-model="photoUrl4" placeholder="URL de la photo" class="form-input">
+        <br>
+        <label for="nouveauPrix">Prix :</label>
+        <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0">
         <br>
         <button type="submit" class="form-button">Envoyer</button>
       </form>
-      <div v-if="submitted" class="submitted-container">
-        <h2>Données soumises :</h2>
-        <p>Model : {{ model }}</p>
-        <p>Description : {{ description }}</p>
-        <p>Photo : {{ photo }}</p>
-      </div>
     </div>
   </main>
 
@@ -44,7 +60,7 @@
   </footer>
 
 </template>
-
+_________________________________________________________________
 <script>
 import AOS from 'aos';
 import axios from 'axios';
@@ -55,16 +71,18 @@ import Entete from "@/components/Entete.vue";
 export default {
   data() {
     return {
-      selectedOption: '',
-      options: [
-        { label: 'Option 1', value: 'option1' },
-        { label: 'Option 2', value: 'option2' },
-        { label: 'Option 3', value: 'option3' }
-      ],
+      selectedCollection: '',
+      collections: [],
+      selectedCateg: '',
+      categ: [],
       model: '',
-      description: '',
-      photo: null,
-      submitted: false
+      nouveldescription: '',
+      photoUrl1: '',
+      photoUrl2: '',
+      photoUrl3: '',
+      photoUrl4: '',
+      submitted: false,
+      nouveauPrix: null
     }
   },
   computed: {
@@ -74,15 +92,99 @@ export default {
       return selectedOption ? selectedOption.label : '';
     }
   },
-  methods: {
-    addOption() {
-      const label = prompt("Entrez le nom de la nouvelle option :");
-      if (label) {
-        const value = label.toLowerCase().replace(/\s/g, '');
-        this.options.push({ label, value });
-      }
-    }
+
+  mounted() {
+    this.recupCollections();
+    this.recupCateg();
   },
+
+  methods: {
+    recupCollections() {
+      axios.get('http://localhost:3000/collections')
+          .then(response => {
+            this.collections = response.data;
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération de la liste des collections :', error);
+          })
+    },
+
+    addCollection(){
+      const nouvelCollection = prompt("Entrez le nom de la nouvelle collection :");
+      const nouvelDescription = prompt("Entrez la description de la nouvelle collection :")
+
+      if (nouvelCollection && nouvelDescription) {
+        const data = {
+          nom: nouvelCollection,
+          description: nouvelDescription
+        };
+        axios.post('http://localhost:3000/collections', data )
+            .then(response => {
+              console.log(response.data);
+              this.recupCollections();
+            })
+            .catch(error => {
+              console.error(error);
+            });
+      }
+
+    },
+    recupCateg() {
+      axios.get('http://localhost:3000/categ')
+          .then(response => {
+            this.categ = response.data;
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération de la liste des collections :', error);
+          })
+    },
+
+    addCateg(){
+      const nouvelCateg = prompt("Entrez le nom de la nouvelle catégorie :");
+      const nouvelDescription = prompt("Entrez la description de la nouvelle catégorie :")
+
+      if (nouvelCateg && nouvelDescription) {
+        const data = {
+          nom: nouvelCateg,
+          description: nouvelDescription
+        };
+        axios.post('http://localhost:3000/categ', data )
+            .then(response => {
+              console.log(response.data);
+              this.recupCateg();
+            })
+            .catch(error => {
+              console.error(error);
+            });
+      }
+
+    },
+
+    submitForm() {
+      const data = {
+        nom: this.model,
+        photo1: this.photoUrl1,
+        photo2: this.photoUrl2,
+        photo3: this.photoUrl3,
+        photo4: this.photoUrl4,
+        categ: this.selectedCateg,
+        col: this.selectedCollection,
+        description: this.nouveldescription,
+        prix: this.nouveauPrix
+      };
+      axios.post('http://localhost:3000/prod', data)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    },
+
+  },
+
+
+
   name: 'ModifCatalogue',
   components: {
     Entete,
@@ -91,7 +193,7 @@ export default {
 }
 </script>
 
-
+_________________________________________________
 <style scoped>
 .form-div {
   text-align: center;
