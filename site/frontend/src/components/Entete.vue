@@ -9,7 +9,7 @@
         </v-col>
         <v-col cols="auto" >
           <router-link to="/" class="no-underline">
-            <img id="logo1" class="image" src="./public/logo1.png" alt="logo">
+            <img id="logo1" class="image" src="./logo1.png" alt="logo">
           </router-link>
         </v-col>
         <v-col cols="auto" >
