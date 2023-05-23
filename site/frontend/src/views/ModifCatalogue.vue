@@ -4,47 +4,55 @@
   </header>
 
   <main>
-    <div class="form-div">
+    <div className="form-div">
       <h1>Nouveau Modèle</h1>
       <form @submit.prevent="submitForm" class="form-container">
         <p>
           Choisissez une collection
-          <select v-model="selectedCollection" class="custom-select">
-            <option v-for="collection in collections" :key="collection.id" :value="collection.nom">{{ collection.nom }}</option>
+          <select v-model="selectedCollection" className="custom-select">
+            <option v-for="collection in collections" :key="collection.id" :value="collection.nom">{{
+                c
+                               llection.nom
+              }}
+            </option>
           </select>
           <br>
         </p>
         <br>
         <p>
           Choisissez une catégorie
-          <select v-model="selectedCateg" class="custom-select">
+          <select v-model="selectedCateg" className="custom-select">
             <option v-for="categorie in categ" :key="categorie.id" :value="categorie.nom">{{ categorie.nom }}</option>
           </select>
           <br>
         </p>
         <br>
-        <label for="model">Nom model :</label>
-        <input type="text" id="model" v-model="model" class="form-input">
+        <label htmlFor="model">Nom model :</label>
+        <input type="text" id="model" v-model="model" className="form-input" required>
         <br>
         <label>Description :</label>
-        <textarea id="nouveldescription" v-model="nouveldescription" class="form-text"></textarea>
+        <textarea id="nouveldescription" v-model="nouveldescription" className="form-text" required></textarea>
         <br>
-        <label for="photoUrl1">Photo 1 :</label>
-        <input type="text" id="photoUrl1" v-model="photoUrl1" placeholder="URL de la photo" class="form-input">
+        <label htmlFor="photoUrl1">Photo 1 :</label>
+        <input type="text" id="photoUrl1" v-model="photoUrl1" placeholder="URL de la photo" className="form-input"
+               required>
         <br>
-        <label for="photoUrl2">Photo 2 :</label>
-        <input type="text" id="photoUrl2" v-model="photoUrl2" placeholder="URL de la photo" class="form-input">
+        <label htmlFor="photoUrl2">Photo 2 :</label>
+        <input type="text" id="photoUrl2" v-model="photoUrl2" placeholder="URL de la photo" className="form-input"
+               required>
         <br>
-        <label for="photoUrl3">Photo 3 :</label>
-        <input type="text" id="photoUrl3" v-model="photoUrl3" placeholder="URL de la photo" class="form-input">
+        <label htmlFor="photoUrl3">Photo 3 :</label>
+        <input type="text" id="photoUrl3" v-model="photoUrl3" placeholder="URL de la photo" className="form-input"
+               required>
         <br>
-        <label for="photoUrl4">Photo 4 :</label>
-        <input type="text" id="photoUrl4" v-model="photoUrl4" placeholder="URL de la photo" class="form-input">
+        <label htmlFor="photoUrl4">Photo 4 :</label>
+        <input type="text" id="photoUrl4" v-model="photoUrl4" placeholder="URL de la photo" className="form-input"
+               required>
         <br>
-        <label for="nouveauPrix">Prix :</label>
-        <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0" class="form-input">
+        <label htmlFor="nouveauPrix">Prix :</label>
+        <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0" className="form-input" required>
         <br>
-        <button type="submit" class="form-button">Envoyer</button>
+        <button type="submit" className="form-button">Envoyer</button>
       </form>
     </div>
   </main>
@@ -138,7 +146,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
 .form-div {
   text-align: center;
@@ -163,7 +170,7 @@ export default {
   font-size: 15px;
 }
 
-.form-text{
+.form-text {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -185,17 +192,7 @@ export default {
   border-radius: 10px;
 }
 
-.submitted-container {
-  margin-top: 20px;
-  background-color: #f0f0f0;
-  padding: 10px;
-}
-
-.option-button:hover{
-  text-decoration: underline;
-}
-
-.custom-select{
+.custom-select {
   border: 1px solid black;
 }
 </style>
