@@ -37,7 +37,7 @@
 
             </div>
             <div v-if="thisCollection === collection.nom">
-              <div class="model" v-for="model in models" v-bind:key="model.id" >
+              <v-card class="model" v-for="model in models" v-bind:key="model.id" >
                 <h2 >{{model.nom}} {{this.recuPhoto(model)}}</h2>
                 <p class="descModel">
                   {{model.description}}
@@ -56,8 +56,10 @@
 
                   </div>
                 </div>
-                <p class="prix">{{model.prix}}€</p>
-              </div>
+                <router-link to="/devis" class="no-underline">
+                  <v-btn color="yellow darken-2" >Demander un devis</v-btn>
+                </router-link>
+              </v-card>
             </div>
           </v-card>
 
