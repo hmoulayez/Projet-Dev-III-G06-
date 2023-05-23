@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Accueil from '../views/Accueil.vue'
+import NotFound from "@/views/NotFound.vue";
 
 const routes= [
   {
@@ -72,6 +73,12 @@ const routes= [
     name: 'ModifCatalogue',
     component: () =>
         import('../views/ModifCatalogue.vue')
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'Notfound',
+    component: () =>
+        import('../views/NotFound.vue')
   },
 
 ]
