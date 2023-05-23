@@ -22,7 +22,9 @@ export default defineConfig({
       rollupOptions: {
           external: [
                 'model3.jpeg',
-                "logo1.png"
+                "logo1.png",
+              "Facebook_icon.svg.png",
+              "insta.png"
             ]
         }
     }
