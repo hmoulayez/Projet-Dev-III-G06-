@@ -3,7 +3,7 @@
     <header>
       <Entete/>
     </header>
-    <main>
+    <main class="corps">
       <div class="login-page">
         <div class="login-container">
           <h1 class="login-title">Connexion</h1>
@@ -151,6 +151,9 @@ input[type="password"] {
   text-decoration: underline;
   cursor: pointer;
 }
-
+.corps{
+  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7311.JPG");
+  background-size: 100%;
+}
 
 </style>

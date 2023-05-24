@@ -106,12 +106,8 @@ export default {
 
 #model3 {
   width: 100%;
-}
-
-.pr-img {
-  position: relative; /* permet de positionner le texte-container par rapport à l'image */
-  width: 100%;
-  height: auto; /* la hauteur s'adaptera à la taille de l'image */
+  text-align: center;
+  justify-self: center;
 }
 
 .pr-text1 {
@@ -119,36 +115,35 @@ export default {
   top: 25%; /* positionne le haut du conteneur à la moitié de l'image */
   left: 25%; /* positionne la gauche du conteneur à la moitié de l'image */
   background-color: rgba(255, 255, 255, 0.1); /* ajoute un fond semi-transparent pour le texte */
-  padding: 10px; /* ajoute un peu d'espace autour du texte */
+  padding: 1%; /* ajoute un peu d'espace autour du texte */
   color : white;
   text-align: center;
-  height:175px;
-  font-size: xxx-large ;
-  margin-top: 50px;
-  border: 1px;
+  height:6%;
+  font-size: 300% ;
+  margin-top: 5%;
   width: 80%;
-  max-width: 800px;
+  max-width: 50%;
 }
 .pr-text2{
   position: absolute; /* positionnement absolu par rapport au conteneur parent */
   top: 50%; /* positionne le haut du conteneur à la moitié de l'image */
-  right: 0.75%; /* positionne la gauche du conteneur à la moitié de l'image */
+  right: 10%; /* positionne la gauche du conteneur à la moitié de l'image */
   background-color: rgba(255, 255, 255, 0.1); /* ajoute un fond semi-transparent pour le texte */
-  padding: 5px; /* ajoute un peu d'espace autour du texte */
+  padding: 1%; /* ajoute un peu d'espace autour du texte */
   color : white;
   text-align: center;
-  height:350px;
-  font-size: xx-large ;
-  margin-top: 50px;
-  border: 1px;
+  height:7%;
+  font-size: 160% ;
+  margin-top: 5%;
   width: 100%;
-  max-width: 1500px;
+  max-width: 75%;
 }
 .pr-text {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Cambria Math";
+  font-family: "Cambria Math",serif;
+  background-image: url("model3.jpeg");
 }
 
 .titre-event{

@@ -2,7 +2,7 @@
   <header>
     <Entete/>
   </header>
-  <main >
+  <main class="corps">
     <br>
     <v-container fluid fill-height>
       <v-row align="center" justify="center">
@@ -122,6 +122,11 @@ main{
   display: block;
   float: right;
   max-width: 300px;
+}
+
+.corps{
+  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7311.JPG");
+  background-size: 100%;
 }
 
 </style>

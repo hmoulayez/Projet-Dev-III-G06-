@@ -3,7 +3,7 @@
     <header>
       <Entete />
     </header>
-    <main>
+    <main class="corps">
       <div class="container">
         <h1 class="form-title">Formulaire de devis</h1>
         <form @submit.prevent="envoyerDemandeDevis" class="my-4">
@@ -160,5 +160,9 @@ select {
 }
 .form-title {
   color: yellow;
+}
+.corps{
+  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7311.JPG");
+  background-size: 100%;
 }
 </style>

@@ -2,7 +2,7 @@
   <v-app>
     <header><Entete/></header>
 
-    <main >
+    <main class="corps">
       <v-container v-for="collection in collections" >
         <v-row dense>
           <v-col cols="12">
@@ -209,9 +209,8 @@ h1,h2, p {
   justify-content: center;
   align-items: center;
 }
-.prix{
-  align-content: center;
-  justify-content: center;
-  text-align: center;
+.corps {
+  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7375.JPG");
+  background-size: 100%;
 }
 </style>
