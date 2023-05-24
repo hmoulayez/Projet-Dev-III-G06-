@@ -37,6 +37,7 @@
       <BasDePage />
     </footer>
   </div>
+
 </template>
 
 <script>
@@ -44,37 +45,40 @@ import Entete from "@/components/Entete.vue";
 import BasDePage from "@/components/BasDePage.vue";
 
 export default {
-  name: "LoginPage",
-  components: { Entete, BasDePage },
-  data() {
-    return {
-      mode: "connexion",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    };
-  },
-  methods: {
-    switchMode() {
-      this.mode = this.mode === "connexion" ? "creation" : "connexion";
+
+    name: "LoginPage",
+    components: { Entete, BasDePage },
+    data() {
+        return {
+            mode: "connexion",
+            email: "",
+            password: "",
+            confirmPassword: "",
+        };
     },
-    submitForm() {
-      if (this.mode === "connexion") {
-        this.performConnexion();
-      } else {
-        this.performInscription();
-      }
+    methods: {
+        switchMode() {
+            this.mode = this.mode === "connexion" ? "creation" : "connexion";
+        },
+        submitForm() {
+            if (this.mode === "connexion") {
+                this.performConnexion();
+            } else {
+                this.performInscription();
+            }
+        },
+        performConnexion() {
+            // Add your logic for login/authentication here
+        },
+        performInscription() {
+            if (this.password !== this.confirmPassword) {
+                // Passwords don't match, handle error
+            }
+            // Add your logic for user registration here
+        },
+
     },
-    performConnexion() {
-      // Add your logic for login/authentication here
-    },
-    performInscription() {
-      if (this.password !== this.confirmPassword) {
-        // Passwords don't match, handle error
-      }
-      // Add your logic for user registration here
-    },
-  },
+
 };
 </script>
 
@@ -101,6 +105,18 @@ export default {
   color: yellow;
   font-size: 24px;
   margin-bottom: 20px;
+    width: 600px;
+    padding: 20px;
+    margin-top: -100px;
+    background-color: #000000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+    text-align: center;
+    color: yellow;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .form-group {

@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="01d6d40f-3770-42a5-885f-e9b825a7458c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/site/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/backend/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/backend/controllers/devis.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/backend/controllers/devis.js" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/site/frontend/src/views/Connexion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/site/frontend/src/views/Connexion.vue" afterDir="false" />
+>>>>>>> 188aa2a (modif connexion)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,9 +59,13 @@
       <workItem from="1684835460306" duration="2963000" />
       <workItem from="1684844986995" duration="13056000" />
       <workItem from="1684859977835" duration="131000" />
+<<<<<<< HEAD
       <workItem from="1684862075362" duration="7075000" />
       <workItem from="1684998288147" duration="2595000" />
       <workItem from="1685001003066" duration="309000" />
+=======
+      <workItem from="1684862075362" duration="6321000" />
+>>>>>>> 188aa2a (modif connexion)
     </task>
     <servers />
   </component>
