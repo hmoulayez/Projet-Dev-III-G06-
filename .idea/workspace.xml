@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/site/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/backend/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/backend/controllers/devis.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/backend/controllers/devis.js" afterDir="false" />
 =======
@@ -15,6 +16,10 @@
 >>>>>>> 188aa2a (modif connexion)
 =======
 >>>>>>> f4e6f58 (copie de code)
+=======
+      <change beforePath="$PROJECT_DIR$/site/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/backend/controllers/devis.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/backend/controllers/devis.js" afterDir="false" />
+>>>>>>> 18d2733 (modif de la table commandes)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,12 +72,15 @@
       <workItem from="1684862075362" duration="7075000" />
       <workItem from="1684998288147" duration="2595000" />
       <workItem from="1685001003066" duration="309000" />
+<<<<<<< HEAD
 =======
       <workItem from="1684862075362" duration="6321000" />
 >>>>>>> 188aa2a (modif connexion)
 =======
       <workItem from="1684862075362" duration="7075000" />
 >>>>>>> f4e6f58 (copie de code)
+=======
+>>>>>>> 18d2733 (modif de la table commandes)
     </task>
     <servers />
   </component>
