@@ -80,6 +80,12 @@ const routes= [
     component: () =>
         import('../views/NotFound.vue')
   },
+  {
+    path:'/suppressionCatalogue',
+    name: 'SuppressionCatalogue',
+    component: () =>
+        import('../views/SuppressionCatalogue.vue')
+  },
 
 ]
 const router = createRouter({

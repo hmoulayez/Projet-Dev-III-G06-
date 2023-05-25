@@ -1,11 +1,11 @@
 <template>
   <header>
-    <Entete/>
+    <EnteteAdmin/>
   </header>
 
   <main>
     <div class="form-div">
-      <h1>Nouveau Model</h1>
+      <h1>Nouveau Modèle</h1>
       <form @submit.prevent="submitForm" class="form-container">
         <p>
           Choisissez une collection
@@ -48,7 +48,7 @@
         <input type="text" id="photoUrl4" v-model="photoUrl4" placeholder="URL de la photo" class="form-input">
         <br>
         <label for="nouveauPrix">Prix :</label>
-        <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0">
+        <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0" class="form-input">
         <br>
         <button type="submit" class="form-button">Envoyer</button>
       </form>
@@ -66,7 +66,7 @@ import AOS from 'aos';
 import axios from 'axios';
 import 'aos/dist/aos.css';
 import BasDePage from "@/components/BasDePage.vue";
-import Entete from "@/components/Entete.vue";
+import EnteteAdmin from "@/components/EnteteAdmin.vue";
 
 export default {
   data() {
@@ -160,6 +160,7 @@ export default {
 
     },
 
+
     submitForm() {
       const data = {
         nom: this.model,
@@ -184,10 +185,9 @@ export default {
   },
 
 
-
   name: 'ModifCatalogue',
   components: {
-    Entete,
+    EnteteAdmin,
     BasDePage,
   },
 }
