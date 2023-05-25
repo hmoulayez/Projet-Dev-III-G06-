@@ -4,7 +4,8 @@
   </header>
 
   <main>
-    <div className="form-div">
+
+    <div class="form-div">
       <h1>Nouveau Modèle</h1>
       <form @submit.prevent="submitForm" class="form-container">
         <p>
@@ -49,8 +50,8 @@
         <input type="text" id="photoUrl4" v-model="photoUrl4" placeholder="URL de la photo" className="form-input"
                required>
         <br>
-        <label htmlFor="nouveauPrix">Prix :</label>
-        <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0" className="form-input" required>
+        <label for="nouveauPrix">Prix :</label>
+        <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0" class="form-input">
         <br>
         <button type="submit" className="form-button">Envoyer</button>
       </form>
