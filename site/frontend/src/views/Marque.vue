@@ -44,7 +44,7 @@ export default {
           titre:"Pourquoi existons nous ?", "description" : "Notre raison d’être est une évidence et une vraie mission de vie: renforcer l’unicité de chaque femme à travers des pièces fortes et distinguées.\n" +
               "\n" +
               "Chaque jour, nous travaillons à concevoir des modèles originaux et uniques qui correspondent à des personnes toutes autant uniques. Le pari est de vous donner un sentiment de confiance en soi, de confort et d’unicité tout en étant élégante et glamour."},
-        { image:"https://storage.cloud.google.com/photokabori/croquis/IMG_7436.JPG",
+        { image:"https://storage.cloud.google.com/photokabori/croquis/IMG_7436-min.JPG",
           titre:"Que faisons nous", "description" : "Pour réaliser cette ambition, nous prenons le temps de créer avec vous, une atmosphère de confiance et de proximité afin de connaître précisément vos besoins et envies.\n" +
               "Nous les analysons et nous vous proposons des croquis personnalisés qui sont à la croisée de l’événement à célébrer, de votre style vestimentaire et de notre touche de créativité.\n" +
               "\n" +

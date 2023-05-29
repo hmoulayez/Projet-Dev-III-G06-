@@ -110,6 +110,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7311-min.JPG");
+  background-size: 100%;
 }
 
 .container {
@@ -162,7 +164,6 @@ select {
   color: yellow;
 }
 .corps{
-  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7311.JPG");
-  background-size: 100%;
+
 }
 </style>

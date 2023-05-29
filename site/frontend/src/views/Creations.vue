@@ -210,7 +210,7 @@ h1,h2, p {
   align-items: center;
 }
 .corps {
-  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7375.JPG");
+  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7311-min.JPG");
   background-size: 100%;
 }
 </style>
