@@ -26,7 +26,6 @@
 
 
 <script>
-import AOS from 'aos';
 import axios from 'axios';
 import 'aos/dist/aos.css';
 import BasDePage from "@/components/BasDePage.vue";
@@ -53,7 +52,7 @@ export default {
             this.models = response.data;
           })
           .catch(error => {
-            console.error('Erreur lors de la récupération de la liste des models :', error);
+            console.error('Erreur lors de la récupération de la liste des modèles :', error);
           })
     },
 
