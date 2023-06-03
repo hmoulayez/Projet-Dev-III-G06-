@@ -10,7 +10,6 @@
           <li><router-link to="/modifcatalogue" class="no-underline">Ajouter Modèle</router-link></li>
           <li><router-link to="/ajouterCollectionCateg" class="no-underline">Ajouter Collection/Catégorie</router-link></li>
           <li><router-link to="/gestionCommandes" class="no-underline">Gérer les commandes</router-link></li>
-
         </ul>
       </nav>
     </div>
