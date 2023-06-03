@@ -23,8 +23,12 @@ const collectionsRoutes = require('./routes/collections');
 const categRoutes = require('./routes/categ');
 
 const prodRoutes = require('./routes/produits');
+
 const contactRoutes = require('./routes/contact');
 
+const commandesRoutes = require('./routes/commandes');
+
+const statutsRoutes = require('./routes/statuts');
 
 //app.use(contactRouter);
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -67,6 +71,8 @@ app.use('/contact', contactRoutes);
 app.use('/photoevents', eventRoutes);
 app.use('/photocreations',creationsRoutes);
 app.use('/prod', prodRoutes);
+app.use('/commandes', commandesRoutes);
+app.use('/statuts', statutsRoutes);
 
 
 

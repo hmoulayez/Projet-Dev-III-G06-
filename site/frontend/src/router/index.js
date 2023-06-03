@@ -86,6 +86,18 @@ const routes= [
     component: () =>
         import('../views/SuppressionCatalogue.vue')
   },
+  {
+    path:'/ajouterCollectionCateg',
+    name: 'AjouterCollectionCateg',
+    component: () =>
+        import('../views/AjouterCollectionCateg.vue')
+  },
+  {
+    path:'/gestionCommandes',
+    name: 'GestionCommandes',
+    component: () =>
+        import('../views/GestionCommandes.vue')
+  },
 
 ]
 const router = createRouter({

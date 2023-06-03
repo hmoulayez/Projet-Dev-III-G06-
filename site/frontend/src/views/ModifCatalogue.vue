@@ -13,9 +13,6 @@
             <option v-for="collection in collections" :key="collection.id" :value="collection.nom">{{ collection.nom }}</option>
           </select>
           <br>
-          OU
-          <br>
-          <button @click="addCollection" class="option-button">Ajoutez</button>
         </p>
         <br>
         <p>
@@ -24,9 +21,6 @@
             <option v-for="categorie in categ" :key="categorie.id" :value="categorie.nom">{{ categorie.nom }}</option>
           </select>
           <br>
-          OU
-          <br>
-          <button @click="addCateg" class="option-button">Ajoutez</button>
         </p>
         <br>
         <label for="model">Nom model :</label>
@@ -62,7 +56,6 @@
 </template>
 _________________________________________________________________
 <script>
-import AOS from 'aos';
 import axios from 'axios';
 import 'aos/dist/aos.css';
 import BasDePage from "@/components/BasDePage.vue";
@@ -85,13 +78,7 @@ export default {
       nouveauPrix: null
     }
   },
-  computed: {
-    selectedOptionLabel() {
-      // Rechercher l'étiquette correspondante à l'option sélectionnée
-      const selectedOption = this.options.find(option => option.value === this.selectedOption);
-      return selectedOption ? selectedOption.label : '';
-    }
-  },
+
 
   mounted() {
     this.recupCollections();
@@ -109,57 +96,15 @@ export default {
           })
     },
 
-    addCollection(){
-      const nouvelCollection = prompt("Entrez le nom de la nouvelle collection :");
-      const nouvelDescription = prompt("Entrez la description de la nouvelle collection :")
-
-      if (nouvelCollection && nouvelDescription) {
-        const data = {
-          nom: nouvelCollection,
-          description: nouvelDescription
-        };
-        axios.post('http://localhost:3000/collections', data )
-            .then(response => {
-              console.log(response.data);
-              this.recupCollections();
-            })
-            .catch(error => {
-              console.error(error);
-            });
-      }
-
-    },
     recupCateg() {
       axios.get('http://localhost:3000/categ')
           .then(response => {
             this.categ = response.data;
           })
           .catch(error => {
-            console.error('Erreur lors de la récupération de la liste des collections :', error);
+            console.error('Erreur lors de la récupération de la liste des catégories :', error);
           })
     },
-
-    addCateg(){
-      const nouvelCateg = prompt("Entrez le nom de la nouvelle catégorie :");
-      const nouvelDescription = prompt("Entrez la description de la nouvelle catégorie :")
-
-      if (nouvelCateg && nouvelDescription) {
-        const data = {
-          nom: nouvelCateg,
-          description: nouvelDescription
-        };
-        axios.post('http://localhost:3000/categ', data )
-            .then(response => {
-              console.log(response.data);
-              this.recupCateg();
-            })
-            .catch(error => {
-              console.error(error);
-            });
-      }
-
-    },
-
 
     submitForm() {
       const data = {
