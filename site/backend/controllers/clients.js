@@ -19,7 +19,7 @@ exports.getAllClients = (req, res) => {
 };
 
 exports.getClientsNom = (req, res) => {
-    const nom = req.params.nom
+    const nom = req.param.nom
 
     pool.getConnection((err, con) => {
         if (err) throw err;

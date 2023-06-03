@@ -11,6 +11,7 @@ const categRoutes = require('./routes/categ');
 const prodRoutes = require('./routes/produits');
 const contactRoutes = require('./routes/contact');
 const devisRoutes = require('./routes/devis');
+const connexionRoutes = require('./routes/connexion')
 
 const app = express();
 
@@ -51,5 +52,6 @@ app.use('/photoevents', eventRoutes);
 app.use('/photocreations', creationsRoutes);
 app.use('/prod', prodRoutes);
 app.use('/devis', devisRoutes);
+app.use('/connexion',connexionRoutes)
 
 module.exports = app;

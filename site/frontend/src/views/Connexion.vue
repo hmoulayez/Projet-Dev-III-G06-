@@ -42,6 +42,7 @@
 <script>
 import Entete from "@/components/Entete.vue";
 import BasDePage from "@/components/BasDePage.vue";
+import axios from 'axios';
 
 export default {
   name: "LoginPage",
@@ -52,6 +53,7 @@ export default {
       email: "",
       password: "",
       confirmPassword: "",
+      authentifié : "No"
     };
   },
   methods: {
@@ -67,6 +69,17 @@ export default {
     },
     performConnexion() {
       // Add your logic for login/authentication here
+      axios.post('http://localhost:3000/connexion',{"email" : this.email, "motdepasse" : this.password})
+          .then(response => {
+            if(response.data[0].email && response.data[0].motdepasse){
+              console.log('succès de la connexion');
+              this.authentifié = "Yes"
+            }
+
+          })
+          .catch(error => {
+            console.error('Erreur lors de la connexion', error);
+          });
     },
     performInscription() {
       if (this.password !== this.confirmPassword) {
