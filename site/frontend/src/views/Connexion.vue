@@ -69,7 +69,7 @@ export default {
     },
     performConnexion() {
       // Add your logic for login/authentication here
-      axios.post('http://localhost:3000/connexion',{"email" : this.email, "motdepasse" : this.password})
+      axios.post('http://18.192.57.171:3000/connexion',{"email" : this.email, "motdepasse" : this.password})
           .then(response => {
             if(response.data[0].email && response.data[0].motdepasse){
               console.log('succès de la connexion');

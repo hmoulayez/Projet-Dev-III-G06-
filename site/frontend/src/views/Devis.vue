@@ -66,7 +66,7 @@ export default {
   methods: {
     recupModels() {
       axios
-          .get("http://localhost:3000/prod/")
+          .get("http://18.192.57.171:3000/prod/")
           .then((response) => {
             this.models = response.data.map((prod) => prod.nom);
           })
@@ -86,7 +86,7 @@ export default {
       };
 
       axios
-          .post("http://localhost:3000/devis", demande)
+          .post("http://18.192.57.171:3000/devis", demande)
           .then(() => {
             console.log("Demande de devis envoyée !");
             this.nom = "";
