@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     recuphotoevents() {
-      axios.get('https://18.192.57.171:3000/photoevents')
+      axios.get('https://serveur.kaboricreations.com/photoevents')
           .then(response => {
             this.photoevent = response.data;
           })
@@ -87,7 +87,7 @@ export default {
           })
     },
     recuphotocreations() {
-      axios.get('https://18.192.57.171:3000/photocreations')
+      axios.get('https://serveur.kaboricreations.com/photocreations')
           .then(response => {
             this.photocreations = response.data;
           })
