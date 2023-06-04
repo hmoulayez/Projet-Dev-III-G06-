@@ -125,7 +125,7 @@ main{
 }
 
 .corps{
-  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7311.JPG");
+  background-image: url('https://storage.cloud.google.com/photokabori/croquis/IMG_7311.JPG');
   background-size: 100%;
 }
 
