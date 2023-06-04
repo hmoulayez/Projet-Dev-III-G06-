@@ -12,34 +12,14 @@ const prodRoutes = require('./routes/produits');
 const contactRoutes = require('./routes/contact');
 const devisRoutes = require('./routes/devis');
 const connexionRoutes = require('./routes/connexion')
+const commandesRoutes = require('./routes/commandes');
+const statutsRoutes = require('./routes/statuts');
 
 const app = express();
 
-const mysql = require('mysql');
-
-const cors = require('cors');
-
 const path = require('path');
 
-const avisRoutes = require('./routes/avis');
 
-const clientsRoutes = require('./routes/clients');
-
-const eventRoutes = require('./routes/photoevents');
-
-const creationsRoutes = require('./routes/photocreations');
-
-const collectionsRoutes = require('./routes/collections');
-
-const categRoutes = require('./routes/categ');
-
-const prodRoutes = require('./routes/produits');
-
-const contactRoutes = require('./routes/contact');
-
-const commandesRoutes = require('./routes/commandes');
-
-const statutsRoutes = require('./routes/statuts');
 
 //app.use(contactRouter);
 app.use(bodyParser.urlencoded({ extended: false }));
