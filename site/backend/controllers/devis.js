@@ -60,7 +60,7 @@ exports.postDevis = (req, res) => {
 function sendEmail(client, emailclient, produit, descriptionClient, res) {
     const transporter = nodemailer.createTransport({
         host: 'smtp-mail.outlook.com',
-        port: 587,
+        port: 25,
         secure: false,
         auth: {
             user: 'marwachennaoui@outlook.be',
@@ -93,6 +93,5 @@ function sendEmail(client, emailclient, produit, descriptionClient, res) {
         })
         .catch((error) => {
             console.log(error);
-            res.status(500).json({ message: 'Une erreur est survenue lors de l\'envoi de la commande.' });
         });
 }
