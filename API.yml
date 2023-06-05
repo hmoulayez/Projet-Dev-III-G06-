@@ -1,3 +1,4 @@
+
 #Catégorie
 
 Endpoint : /categories/
@@ -39,7 +40,7 @@ Body :
 }
 
 
-Endpoint : categ?id=x?nom=y?description=z/
+Endpoint : /categ/
 Method : Post
 Description : ajouter une nouvelle catégorie dans la table catégorie.
 Request :
@@ -395,7 +396,7 @@ Body :
 }
 
 
-Endpoint : /prod?col='collection 1'/
+Endpoint : /prod/{collection}
 Method : GET
 Description : consulter la liste des produits d'une collection spécifique .
 Request :
@@ -480,7 +481,7 @@ Body :
 
 
 
-Endpoint : /prod?categ=une nouvelle categ/
+Endpoint : /prod/categ/{nom_categorie}
 Method : GET
 Description : consulter la liste des produits d'une catégorie spécifique .
 Request :
@@ -564,7 +565,7 @@ Body :
 }
 
 
-Endpoint : /prod?prix=100/
+Endpoint :  /prod/prix/100
 Method : GET
 Description : consulter la liste des produits d'un prix spécifique .
 Request :
@@ -648,7 +649,7 @@ Body :
 }   
 
 
-Endpoint : /prod?prix=100/
+Endpoint : /prod/prix/100
 Method : DELETE
 Description : supprimer des produits d'un prix spécifique.
 Request :
