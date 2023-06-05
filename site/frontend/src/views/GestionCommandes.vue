@@ -68,7 +68,7 @@ export default {
 
   methods: {
     recupCommandes() {
-      axios.get('http://localhost:3000/commandes')
+      axios.get('https://serveur.kaboricreations.com/commandes')
           .then(response => {
             this.commandes = response.data;
           })
@@ -85,7 +85,7 @@ export default {
         descriptionAdmin: commande.descriptionAdmin
 
       };
-      axios.put('http://localhost:3000/commandes', data)
+      axios.put('https://serveur.kaboricreations.com/commandes', data)
           .then(response => {
             console.log(response.data);
           })
@@ -96,7 +96,7 @@ export default {
 
 
     recupStatuts() {
-      axios.get('http://localhost:3000/statuts')
+      axios.get('https://serveur.kaboricreations.com/statuts')
           .then(response => {
             this.statuts = response.data;
           })
@@ -114,7 +114,7 @@ export default {
         id: commande.id,
         statut: this.selectedStatut
       };
-      axios.put('http://localhost:3000/commandes/statut/', data)
+      axios.put('https://serveur.kaboricreations.com/commandes/statut/', data)
           .then(response => {
             console.log(response.data);
           })

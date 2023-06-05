@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     recupCollections() {
-      axios.get('http://18.192.57.171:3000/collections')
+      axios.get('https://serveur.kaboricreations.com/collections')
           .then(response => {
             this.collections = response.data;
           })
@@ -104,7 +104,7 @@ export default {
     },
     recupModels(collection) {
 
-      axios.get('http://18.192.57.171:3000/prod/' ,{
+      axios.get('https://serveur.kaboricreations.com/prod/' ,{
         params:{
           col: collection
         }})

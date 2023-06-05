@@ -54,7 +54,7 @@
   </footer>
 
 </template>
-_________________________________________________________________
+
 <script>
 import axios from 'axios';
 import 'aos/dist/aos.css';
@@ -87,7 +87,7 @@ export default {
 
   methods: {
     recupCollections() {
-      axios.get('http://localhost:3000/collections')
+      axios.get('https://serveur.kaboricreations.com/collections')
           .then(response => {
             this.collections = response.data;
           })
@@ -97,7 +97,7 @@ export default {
     },
 
     recupCateg() {
-      axios.get('http://localhost:3000/categ')
+      axios.get('https://serveur.kaboricreations.com/categ')
           .then(response => {
             this.categ = response.data;
           })
@@ -118,7 +118,7 @@ export default {
         description: this.nouveldescription,
         prix: this.nouveauPrix
       };
-      axios.post('http://localhost:3000/prod', data)
+      axios.post('https://serveur.kaboricreations.com/prod', data)
           .then(response => {
             console.log(response.data);
           })
@@ -138,7 +138,7 @@ export default {
 }
 </script>
 
-_________________________________________________
+
 <style scoped>
 .form-div {
   text-align: center;
