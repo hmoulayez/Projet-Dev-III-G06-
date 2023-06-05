@@ -5,11 +5,6 @@ const pool = mysql.createPool({
     user: 'serveur-Kabori',
     password: 'Pd\)T23nGB-Tc3RU',
     database: 'siteKabori',
-    ssl: {
-        ca: fs.readFileSync('__certifs' + '/server-ca.pem'), // Chemin vers le certificat de l'autorité de certification
-        key: fs.readFileSync('__certifs' + '/client-key.pem'), // Chemin vers la clé privée du client
-        cert: fs.readFileSync('__certifs' + '/client-cert.pem'), // Chemin vers le certificat du client
-    },
     connectionLimit: 10 // Nombre maximal de connexions dans la pool
 });
 
