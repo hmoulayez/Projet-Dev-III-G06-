@@ -146,27 +146,6 @@ Body :
 
 
 
-Endpoint : collections/:id:nom:description/
-Method : Post
-Description : ajouter une nouvelle collection  dans la table collections.
-Request :
-Headers :
-- Content-Type : application/json
-- Authorization : Bearer <token>
-
-Responses :
-Success :
-Code : 201
-Content-Type : application/json
-Body :
-[
-    {
-        "id": 10 ,
-        "nom": "une collection d'essai",
-        "description": "3eme collection"
-    }
-]
-
 Endpoint : /collections/
 Method : DELETE
 Description : supprimer la table des collections.
