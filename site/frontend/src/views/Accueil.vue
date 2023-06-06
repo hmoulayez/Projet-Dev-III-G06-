@@ -153,7 +153,7 @@ export default {
 }
 
 .kaborimage {
-  background-image: url("bckrndAccueil.jpeg");
+  background-image: url("https://storage.cloud.google.com/photokabori/divers/IMG_6324.jpg");
   background-size: 100%;
   color: black;
   margin: 5%
