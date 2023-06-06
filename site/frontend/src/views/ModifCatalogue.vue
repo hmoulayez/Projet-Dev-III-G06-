@@ -4,22 +4,20 @@
   </header>
 
   <main>
-
     <div class="form-div">
       <h1>Nouveau Modèle</h1>
       <form @submit.prevent="submitForm" class="form-container">
         <p>
           Choisissez une collection
-          <select v-model="selectedCollection" className="custom-select">
-            <option v-for="collection in collections" :key="collection.id" :value="collection.nom">{{collection.nom }}
-            </option>
+          <select v-model="selectedCollection" class="custom-select">
+            <option v-for="collection in collections" :key="collection.id" :value="collection.nom">{{ collection.nom }}</option>
           </select>
           <br>
         </p>
         <br>
         <p>
           Choisissez une catégorie
-          <select v-model="selectedCateg" className="custom-select">
+          <select v-model="selectedCateg" class="custom-select">
             <option v-for="categorie in categ" :key="categorie.id" :value="categorie.nom">{{ categorie.nom }}</option>
           </select>
           <br>
@@ -46,7 +44,7 @@
         <label for="nouveauPrix">Prix :</label>
         <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0" class="form-input" required>
         <br>
-        <button type="submit" className="form-button">Envoyer</button>
+        <button type="submit" class="form-button">Envoyer</button>
       </form>
     </div>
   </main>
@@ -164,7 +162,7 @@ export default {
   font-size: 15px;
 }
 
-.form-text {
+.form-text{
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
