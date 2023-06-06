@@ -3,7 +3,7 @@
     <header>
       <Entete />
     </header>
-    <main class="corps">
+    <main>
       <div class="container">
         <h1 class="form-title">Formulaire de devis</h1>
         <form @submit.prevent="envoyerDemandeDevis" class="my-4">
@@ -31,8 +31,10 @@
 
           <button type="submit" class="btn btn-envoyer">Envoyer</button>
         </form>
-        <div v-if="demandeEnvoyee" class="message-succes">
-          Demande de devis envoyée avec succès !
+        <div class="col-md-6">
+          <div>
+            <p class="text-success" v-if="demandeEnvoyee">Demande envoyée avec succès !</p>
+          </div>
         </div>
       </div>
     </main>
@@ -57,7 +59,7 @@ export default {
       modele: "",
       remarque: "",
       models: [],
-      demandeEnvoyee: false
+      demandeEnvoyee: false,
     };
   },
   mounted() {
@@ -66,15 +68,12 @@ export default {
   methods: {
     recupModels() {
       axios
-          .get("https://serveur.kaboricreations.com/prod/")
+          .get("http://localhost:3000/prod/")
           .then((response) => {
             this.models = response.data.map((prod) => prod.nom);
           })
           .catch((error) => {
-            console.error(
-                "Erreur lors de la récupération de la liste des modèles:",
-                error
-            );
+            console.error("Erreur lors de la récupération de la liste des modèles:", error);
           });
     },
     envoyerDemandeDevis() {
@@ -82,11 +81,11 @@ export default {
         nom: this.nom,
         email: this.email,
         modele: this.modele,
-        remarque: this.remarque
+        remarque: this.remarque,
       };
 
       axios
-          .post("https://serveur.kaboricreations.com/devis", demande)
+          .post("http://localhost:3000/devis", demande)
           .then(() => {
             console.log("Demande de devis envoyée !");
             this.nom = "";
@@ -97,9 +96,14 @@ export default {
           })
           .catch((error) => {
             console.error("Erreur lors de l'envoi de la demande de devis :", error);
+            this.nom = "";
+            this.email = "";
+            this.modele = "";
+            this.remarque = "";
+            this.demandeEnvoyee = true;
           });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -110,8 +114,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7311-min.JPG");
-  background-size: 100%;
 }
 
 .container {
@@ -159,11 +161,14 @@ select {
   padding: 10px;
   text-align: center;
   margin-top: 10px;
+  border-radius: 5px;
 }
+
+.message-succes i {
+  margin-right: 5px;
+}
+
 .form-title {
   color: yellow;
-}
-.corps{
-
 }
 </style>
