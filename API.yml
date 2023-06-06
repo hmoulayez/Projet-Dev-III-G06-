@@ -375,7 +375,7 @@ Body :
 }
 
 
-Endpoint : /prod/{collection}
+Endpoint : /prod/:collection
 Method : GET
 Description : consulter la liste des produits d'une collection spécifique .
 Request :
@@ -460,7 +460,7 @@ Body :
 
 
 
-Endpoint : /prod/categ/{nom_categorie}
+Endpoint : /prod/:categ
 Method : GET
 Description : consulter la liste des produits d'une catégorie spécifique .
 Request :
