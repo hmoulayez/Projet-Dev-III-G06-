@@ -9,7 +9,11 @@
           <li><router-link to="/suppressionCatalogue" class="no-underline">Supprimer Modèle</router-link></li>
           <li><router-link to="/modifcatalogue" class="no-underline">Ajouter Modèle</router-link></li>
           <li><router-link to="/ajouterCollectionCateg" class="no-underline">Ajouter Collection/Catégorie</router-link></li>
+<<<<<<< HEAD
           <li><router-link to="/gestionCommandes" class="no-underline">Gérer les commandes</router-link></li>
+=======
+          <li><router-link to="/gestionCommandes" class="no-underline">Voir Commandes</router-link></li>
+>>>>>>> 555ed7b (correction bugs et ajout profil client)
         </ul>
       </nav>
     </div>

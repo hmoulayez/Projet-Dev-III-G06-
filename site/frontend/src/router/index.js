@@ -98,6 +98,12 @@ const routes= [
     component: () =>
         import('../views/GestionCommandes.vue')
   },
+  {
+    path:'/infosprofil',
+    name: 'InfosProfil',
+    component: () =>
+        import('../views/InfosProfil.vue')
+  },
 
 ]
 const router = createRouter({
