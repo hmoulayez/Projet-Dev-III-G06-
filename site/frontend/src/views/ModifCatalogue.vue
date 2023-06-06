@@ -24,25 +24,25 @@
         </p>
         <br>
         <label for="model">Nom model :</label>
-        <input type="text" id="model" v-model="model" class="form-input">
+        <input type="text" id="model" v-model="model" class="form-input" required>
         <br>
         <label>Description :</label>
-        <textarea id="nouveldescription" v-model="nouveldescription" class="form-text"></textarea>
+        <textarea id="nouveldescription" v-model="nouveldescription" class="form-text" required></textarea>
         <br>
         <label for="photoUrl1">Photo 1 :</label>
-        <input type="text" id="photoUrl1" v-model="photoUrl1" placeholder="URL de la photo" class="form-input">
+        <input type="text" id="photoUrl1" v-model="photoUrl1" placeholder="URL de la photo" class="form-input" required>
         <br>
         <label for="photoUrl2">Photo 2 :</label>
-        <input type="text" id="photoUrl2" v-model="photoUrl2" placeholder="URL de la photo" class="form-input">
+        <input type="text" id="photoUrl2" v-model="photoUrl2" placeholder="URL de la photo" class="form-input" required>
         <br>
         <label for="photoUrl3">Photo 3 :</label>
-        <input type="text" id="photoUrl3" v-model="photoUrl3" placeholder="URL de la photo" class="form-input">
+        <input type="text" id="photoUrl3" v-model="photoUrl3" placeholder="URL de la photo" class="form-input" required>
         <br>
         <label for="photoUrl4">Photo 4 :</label>
-        <input type="text" id="photoUrl4" v-model="photoUrl4" placeholder="URL de la photo" class="form-input">
+        <input type="text" id="photoUrl4" v-model="photoUrl4" placeholder="URL de la photo" class="form-input" required>
         <br>
         <label for="nouveauPrix">Prix :</label>
-        <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0" class="form-input">
+        <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0" class="form-input" required>
         <br>
         <button type="submit" class="form-button">Envoyer</button>
       </form>
@@ -54,7 +54,7 @@
   </footer>
 
 </template>
-_________________________________________________________________
+
 <script>
 import axios from 'axios';
 import 'aos/dist/aos.css';
@@ -138,7 +138,6 @@ export default {
 }
 </script>
 
-_________________________________________________
 <style scoped>
 .form-div {
   text-align: center;
@@ -183,16 +182,6 @@ _________________________________________________
   border: none;
   cursor: pointer;
   border-radius: 10px;
-}
-
-.submitted-container {
-  margin-top: 20px;
-  background-color: #f0f0f0;
-  padding: 10px;
-}
-
-.option-button:hover{
-  text-decoration: underline;
 }
 
 .custom-select{

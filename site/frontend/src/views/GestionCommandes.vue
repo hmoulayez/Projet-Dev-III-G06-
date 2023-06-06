@@ -3,7 +3,7 @@
     <EnteteAdmin/>
   </header>
 
-  <table>
+  <table class="tableau">
     <thead>
     <tr>
       <th>ID</th>
@@ -14,7 +14,6 @@
       <th>Prix</th>
       <th>Statut</th>
       <th>Changer Statut</th>
-      <!-- Ajoutez d'autres en-têtes de colonnes selon vos besoins -->
     </tr>
     </thead>
     <tbody>
@@ -25,8 +24,8 @@
       <td>{{ commande.produit }}</td>
 
       <td>
-        <input type="text" v-model="commande.descriptionAdmin" placeholder="Entrez le texte">
-        <button @click="publierTexte(commande)">Publier</button>
+        <textarea rows="3" type="text" v-model="commande.descriptionAdmin" placeholder="Entrez le texte" class="cmd-text"></textarea>
+        <button @click="publierTexte(commande)" class="td-button">Modifier</button>
       </td>
       <td>{{ commande.prix }}</td>
       <td>{{ commande.statut }}</td>
@@ -35,7 +34,6 @@
           <option v-for="statut in statuts" :key="statut.nom" :value="statut.nom">{{ statut.nom }}</option>
         </select>
       </td>
-      <!-- Ajoutez d'autres colonnes selon vos besoins -->
     </tr>
     </tbody>
   </table>
@@ -101,7 +99,7 @@ export default {
             this.statuts = response.data;
           })
           .catch(error => {
-            console.error('Erreur lors de la récupération de la liste des collections :', error);
+            console.error('Erreur lors de la récupération de la liste des statuts :', error);
           })
     },
 
@@ -124,11 +122,6 @@ export default {
     },
 
 
-
-
-
-
-
   },
 
 
@@ -147,7 +140,7 @@ export default {
 
 <style scoped>
 .tableau {
-  padding: 10%;
+  padding: 5%;
   width: 100%;
   border-collapse: collapse;
   margin-right: auto;
@@ -155,25 +148,6 @@ export default {
 }
 
 .td-button{
-  padding: 8px;
-  text-align: right;
-  border-bottom: 1px solid #ddd;
-}
-
-.td-nom {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  text-align: left;
-  padding: 8px;
-  background-color: #f2f2f2;
-  font-size: 150%;
-}
-
-.button-table {
   background-color: black;
   color: white;
   border: none;
@@ -183,7 +157,34 @@ th {
   display: inline-block;
   cursor: pointer;
   border-radius: 4px;
+  margin-left: 5px;
 }
 
 
+th {
+  text-align: left;
+  padding: 8px;
+  background-color: #f2f2f2;
+  font-size: 150%;
+}
+
+.custom-select{
+  border: 1px solid black;
+}
+.cmd-text{
+  width: 75%;
+  height: 100%;
+}
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  border-top: 1px solid black;
+}
+td {
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  padding: 8px;
+}
 </style>

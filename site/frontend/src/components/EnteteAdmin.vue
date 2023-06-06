@@ -9,6 +9,7 @@
           <li><router-link to="/suppressionCatalogue" class="no-underline">Supprimer Modèle</router-link></li>
           <li><router-link to="/modifcatalogue" class="no-underline">Ajouter Modèle</router-link></li>
           <li><router-link to="/ajouterCollectionCateg" class="no-underline">Ajouter Collection/Catégorie</router-link></li>
+          <li><router-link to="/gestionCommandes" class="no-underline">Voir Commandes</router-link></li>
         </ul>
       </nav>
     </div>

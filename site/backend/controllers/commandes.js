@@ -22,7 +22,6 @@ exports.updateCommandes = (req, res) => {
     const idCmd = req.body.id;
     const descriptionAdminCmd = req.body.descriptionAdmin;
 
-    // Suppression sur base du nom
     const sql = "UPDATE commandes SET descriptionAdmin = (?) WHERE id = (?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
@@ -38,7 +37,6 @@ exports.updateStatut = (req, res) => {
     const idCmd = req.body.id;
     const statutCmd = req.body.statut;
 
-    // Suppression sur base du nom
     const sql = "UPDATE commandes SET statut = (?) WHERE id = (?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
