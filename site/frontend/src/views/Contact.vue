@@ -2,7 +2,7 @@
   <header>
     <Entete/>
   </header>
-  <main>
+  <main >
     <div class="container" id="contact">
       <div class="row">
         <div class="col-md-6">
@@ -191,5 +191,6 @@ export default {
   margin-bottom: 100px;
   color: rgb(255,215,0);
 }
+
 </style>
 

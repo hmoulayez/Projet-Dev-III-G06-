@@ -3,7 +3,7 @@
     <header>
       <Entete />
     </header>
-    <main>
+    <main class="corps">
       <div class="login-page">
         <div class="login-container">
           <h1 class="login-title">{{ mode === 'connexion' ? 'Connexion' : 'Inscription' }}</h1>
@@ -168,5 +168,10 @@ input[type="password"] {
   color: darkgreen;
   text-decoration: underline;
   cursor: pointer;
+}
+.corps {
+  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7311-min.JPG");
+  background-size: 100%;
+  min-height: 100%;
 }
 </style>

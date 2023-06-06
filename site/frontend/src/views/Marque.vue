@@ -44,14 +44,14 @@ export default {
           titre:"Pourquoi existons nous ?", "description" : "Notre raison d’être est une évidence et une vraie mission de vie: renforcer l’unicité de chaque femme à travers des pièces fortes et distinguées.\n" +
               "\n" +
               "Chaque jour, nous travaillons à concevoir des modèles originaux et uniques qui correspondent à des personnes toutes autant uniques. Le pari est de vous donner un sentiment de confiance en soi, de confort et d’unicité tout en étant élégante et glamour."},
-        { image:"https://storage.cloud.google.com/photokabori/croquis/IMG_7436-min.JPG",
+        { image:"https://storage.cloud.google.com/photokabori/Photo%20Polychrome/Inaya/DSC09829.jpg",
           titre:"Que faisons nous", "description" : "Pour réaliser cette ambition, nous prenons le temps de créer avec vous, une atmosphère de confiance et de proximité afin de connaître précisément vos besoins et envies.\n" +
               "Nous les analysons et nous vous proposons des croquis personnalisés qui sont à la croisée de l’événement à célébrer, de votre style vestimentaire et de notre touche de créativité.\n" +
               "\n" +
               "Certains modèles vous sont déjà proposés. Il ne reste plus qu’à les réaliser à la juste taille pour vous. Évidemment, ils sont personnalisables.\n" +
               "\n" +
               "Cependant, nous réalisons un maximum de 24 exemplaires par modèles, afin de conserver le caractère unique et authentique de la création."},
-        { image:"",
+        { image:"https://storage.cloud.google.com/photokabori/Photo%20Polychrome/Josiane/DSC09373.jpg",
           titre:"Rejoignez la Bori Ladies Team", "description" : "On entend souvent dire qu’il faut assumer son corps, qu’il faut assumer son apparence physique. Ici, nous pensons que nous n’avons pas à l’assumer, mais à l’affirmer. On assume des fautes, des erreurs, des écarts de conduite. On n’assume pas qui on est physiquement, on l’affirme.\n" +
               "\n" +
               "Vous êtes magnifiques et incroyablement belles. Comme vous êtes. N’en doutez jamais. Rejoignez la ‘’Bori-Ladies Team’’ et affirmons votre beauté et votre élégance à travers des pièces qui vous ressemblent. Rejoignez une tribu de femmes fortes, confiantes et élégantes."}

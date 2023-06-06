@@ -25,7 +25,6 @@
           <li ><router-link to="/services" class="no-underline">Nos services</router-link></li>
           <li ><router-link to="/marque" class="no-underline">La marque</router-link></li>
           <li ><router-link to="/contact" class="no-underline">Nous contacter</router-link></li>
-          <li><router-link to="/infosProfil" class="no-underline">Infos Profile</router-link></li>
           <li><router-link to="/faq" class="no-underline">FAQ</router-link></li>
         </ul>
       </nav>
