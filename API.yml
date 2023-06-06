@@ -1,3 +1,4 @@
+
 #Catégorie
 
 Endpoint : /categories/
@@ -39,7 +40,7 @@ Body :
 }
 
 
-Endpoint : categ?id=x?nom=y?description=z/
+Endpoint : /categ/
 Method : Post
 Description : ajouter une nouvelle catégorie dans la table catégorie.
 Request :
@@ -144,27 +145,6 @@ Body :
 }
 
 
-
-Endpoint : collections/:id:nom:description/
-Method : Post
-Description : ajouter une nouvelle collection  dans la table collections.
-Request :
-Headers :
-- Content-Type : application/json
-- Authorization : Bearer <token>
-
-Responses :
-Success :
-Code : 201
-Content-Type : application/json
-Body :
-[
-    {
-        "id": 10 ,
-        "nom": "une collection d'essai",
-        "description": "3eme collection"
-    }
-]
 
 Endpoint : /collections/
 Method : DELETE
@@ -395,7 +375,7 @@ Body :
 }
 
 
-Endpoint : /prod?col='collection 1'/
+Endpoint : /prod/:collection
 Method : GET
 Description : consulter la liste des produits d'une collection spécifique .
 Request :
@@ -480,7 +460,7 @@ Body :
 
 
 
-Endpoint : /prod?categ=une nouvelle categ/
+Endpoint : /prod/:categ
 Method : GET
 Description : consulter la liste des produits d'une catégorie spécifique .
 Request :
@@ -564,7 +544,7 @@ Body :
 }
 
 
-Endpoint : /prod?prix=100/
+Endpoint :  /prod/prix/100
 Method : GET
 Description : consulter la liste des produits d'un prix spécifique .
 Request :
@@ -648,7 +628,7 @@ Body :
 }   
 
 
-Endpoint : /prod?prix=100/
+Endpoint : /prod/prix/100
 Method : DELETE
 Description : supprimer des produits d'un prix spécifique.
 Request :
