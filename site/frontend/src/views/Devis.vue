@@ -172,7 +172,7 @@ select {
   color: yellow;
 }
 .corps {
-  background-image: url("https://storage.cloud.google.com/photokabori/croquis/IMG_7311-min.JPG");
+  background-image: url("https://storage.googleapis.com/photokabori/croquis/IMG_7311-min.JPG");
   background-size: 100%;
   min-height: 100%;
 }

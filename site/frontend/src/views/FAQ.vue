@@ -98,6 +98,6 @@ h1 {
   display: block;
 }
 .corps{
-  background-image: url("https://storage.cloud.google.com/photokabori/divers/IMG_6324.jpg");
+  background-image: url("https://storage.googleapis.com/photokabori/croquis/IMG_7311-min.JPG");
 }
 </style>

@@ -30,10 +30,10 @@
             <h4>Suivez-nous sur :</h4>
             <div class="social-media-icons">
               <a href="https://www.facebook.com/kaboricreations" target="_blank">
-                <img src="https://storage.cloud.google.com/photokabori/Photo%20Polychrome/images/Facebook_icon.svg.png" alt="facebook logo" />
+                <img src="https://storage.googleapis.com/photokabori/Photo%20Polychrome/images/Facebook_icon.svg.png" alt="facebook logo" />
               </a>
               <a href="https://www.instagram.com/kabori_creations/" target="_blank">
-                <img src="https://storage.cloud.google.com/photokabori/Photo%20Polychrome/images/insta.png" alt="Instagram logo" />
+                <img src="https://storage.googleapis.com/photokabori/Photo%20Polychrome/images/insta.png" alt="Instagram logo" />
               </a>
             </div>
           </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="entete">
-      <img id="logo1" class="image" src="https://storage.cloud.google.com/photokabori/Photo%20Polychrome/images/logoNoirOr.png" alt="logo">
+      <img id="logo1" class="image" src="https://storage.googleapis.com/photokabori/Photo%20Polychrome/images/logoNoirOr.png" alt="logo">
       <nav class="navbar">
         <ul class="nav-list">
           <li ><router-link to="/" class="no-underline">Accueil</router-link></li>
