@@ -2,25 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const cors = require('cors');
-const avisRoutes = require('./routes/avis');
-const clientsRoutes = require('./routes/clients');
-const eventRoutes = require('./routes/photoevents');
-const creationsRoutes = require('./routes/photocreations');
-const collectionsRoutes = require('./routes/collections');
-const categRoutes = require('./routes/categ');
-const prodRoutes = require('./routes/produits');
-const contactRoutes = require('./routes/contact');
+
 const devisRoutes = require('./routes/devis');
 const connexionRoutes = require('./routes/connexion')
-const commandesRoutes = require('./routes/commandes');
-const statutsRoutes = require('./routes/statuts');
 
 const app = express();
 
 const path = require('path');
 
-<<<<<<< HEAD
-=======
 const avisRoutes = require('./routes/avis');
 
 const clientsRoutes = require('./routes/clients');
@@ -36,7 +25,6 @@ const categRoutes = require('./routes/categ');
 const prodRoutes = require('./routes/produits');
 
 const contactRoutes = require('./routes/contact');
->>>>>>> 6f53895 (modification et ajout pour la gestion catalogue cotée admin et ajout de gestion de commande coté admin aussi.)
 
 const commandesRoutes = require('./routes/commandes');
 
@@ -78,11 +66,8 @@ app.use('/contact', contactRoutes);
 app.use('/photoevents', eventRoutes);
 app.use('/photocreations', creationsRoutes);
 app.use('/prod', prodRoutes);
-<<<<<<< HEAD
 app.use('/devis', devisRoutes);
 app.use('/connexion',connexionRoutes)
-=======
->>>>>>> 6f53895 (modification et ajout pour la gestion catalogue cotée admin et ajout de gestion de commande coté admin aussi.)
 app.use('/commandes', commandesRoutes);
 app.use('/statuts', statutsRoutes);
 
