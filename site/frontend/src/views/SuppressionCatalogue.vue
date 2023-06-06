@@ -47,7 +47,7 @@ export default {
   methods: {
 
     recupModels() {
-      axios.get('http://localhost:3000/prod')
+      axios.get('https://serveur.kaboricreations.com/prod')
           .then(response => {
             this.models = response.data;
           })
@@ -57,7 +57,7 @@ export default {
     },
 
     supprimerModel(nom) {
-      axios.delete(`http://localhost:3000/prod/${nom}`)
+      axios.delete(`https://serveur.kaboricreations.com/prod/${nom}`)
           .then(response => {
             this.models = this.models.filter(model => model.nom !== nom);
           })
