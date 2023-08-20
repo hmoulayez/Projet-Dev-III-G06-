@@ -1,11 +1,12 @@
 
 const mysql = require("mysql");
 const nodemailer = require('nodemailer');
+const fs = require("fs");
 
 const pool = mysql.createPool({
     host: '34.79.25.79',
-    user: 'root',
-    password: 'admin',
+    user: 'serveur-Kabori',
+    password: 'Pd\\)T23nGB-Tc3RU',
     database: 'siteKabori',
     connectionLimit: 20
 });
@@ -47,12 +48,12 @@ exports.postContact = (req, res) => {
 
 function sendEmail(name, email, message, res) {
     const transporter = nodemailer.createTransport({
-        host: 'smtp-mail.outlook.com',
+        host: 'smtp-mail.outlook.com', // l'exemple de la structure de mail si c gmail tu change
         port: 587,
         secure: false,
         auth: {
-            user: 'marwachennaoui@outlook.be',
-            pass: 'Tostos123@',
+            user: 'sitekabori@outlook.fr', // tu met ton mail et le mot de passe et je te conseille que tu fais un autre mail que tu utlises pas
+            pass: 'Tostos123@', // le mot de passe
         },
         tls: {
             ciphers: 'SSLv3'
@@ -60,11 +61,11 @@ function sendEmail(name, email, message, res) {
     });
 
     const mailOptions = {
-        from: 'marwachennaoui@outlook.be' ,
-        to: 'safachennaoui12@gmail.com',
+        from: 'sitekabori@outlook.fr' , // ton mail
+        to: 'chennaouimarwa0@gmail.com', // le mail de la creatrice.
         subject: 'Nouveau message de formulaire de contact',
         html: `
-            <p>Nouveau message de formulaire de contact:</p>
+            <p>Nouveau message de formulaire de contact:</p> // le contenu du mailS
             <ul>
                 <li><strong>Nom:</strong> ${name}</li>
                 <li><strong>E-mail:</strong> ${email}</li>
@@ -83,19 +84,3 @@ function sendEmail(name, email, message, res) {
             res.status(500).json({message: 'Une erreur est survenue lors de l\'envoi du message.'});
         });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

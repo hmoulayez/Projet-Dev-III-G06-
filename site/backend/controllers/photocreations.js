@@ -1,10 +1,17 @@
 const mysql = require("mysql");
+const fs = require("fs");
+const cloudinary = require('cloudinary').v2;
 const pool = mysql.createPool({
-    host: '34.79.25.79',
+    host: 'localhost',
     user: 'root',
-    password: 'admin',
-    database: 'siteKabori',
-    connectionLimit: 10 // Nombre maximal de connexions dans la pool
+    password: '',
+    database: 'sitekabori',
+    connectionLimit: 100 // Nombre maximal de connexions dans la pool
+});
+cloudinary.config({
+    cloud_name: 'dhsfpkkqj',
+    api_key: '436354294995913',
+    api_secret: 'M2uDXuvaSQkMsJaBReM3yqaZ--E'
 });
 
 exports.getPhotocreations = (req, res) => {
@@ -18,9 +25,10 @@ exports.getPhotocreations = (req, res) => {
     });
 };
 
-exports.postPhotocreations = (req, res) => {
+exports.postPhotocreations =  (req, res) => {
     // Récupération des valeurs depuis le corps de la requête
-    const url = req.body.url;
+
+    const PublicId = req.body.url;
     const description = req.body.description;
     const nom = req.body.nom;
 
@@ -28,13 +36,13 @@ exports.postPhotocreations = (req, res) => {
     const sql = "INSERT INTO photocreations (url, description, nom) VALUES (?, ?, ?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
-        con.query(sql, [url, description, nom], (err, result, fields) => {
+        con.query("INSERT INTO photocreations (url,nom,description) VALUES (?,?,?)", [PublicId, nom, description], (err, result, fields) => {
             con.release();
             if (err) throw err;
             res.json(result);
         });
     });
-};
+ };
 
 exports.deletePhotocreations = (req, res) => {
     // Récupération des valeurs depuis le corps de la requête

@@ -4,19 +4,15 @@
       <router-view/>
     </v-main>
   </v-app>
-  <!--test-selecty/-->
+  <!--AjouterCollectionCateg/-->
 </template>
 
 <script>
-import Carouselimg from "@/components/Carouselimg.vue";
-import testOverlay from "@/views/testSelecty.vue";
-import TestSelecty from "@/views/testSelecty.vue";
+import AjouterCollectionCateg from "@/views/AjouterCollectionCateg.vue";
 export default {
   name: 'App',
   components : {
-    TestSelecty,
-    Carouselimg,
-    testOverlay
+    AjouterCollectionCateg
   }
 }
 </script>
