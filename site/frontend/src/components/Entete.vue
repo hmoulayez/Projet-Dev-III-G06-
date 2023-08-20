@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <div class="entete">
@@ -9,7 +10,7 @@
         </v-col>
         <v-col cols="auto" >
           <router-link to="/" class="no-underline">
-            <img id="logo1" class="image" src="https://storage.googleapis.com/photokabori/Photo%20Polychrome/images/logoNoirOr.png" alt="logo">
+            <img id="logo1" class="image" src="https://storage.cloud.google.com/photokabori/Photo%20Polychrome/images/logoNoirOr.png" alt="logo">
           </router-link>
         </v-col>
         <v-col cols="auto" >
@@ -25,6 +26,7 @@
           <li ><router-link to="/services" class="no-underline">Nos services</router-link></li>
           <li ><router-link to="/marque" class="no-underline">La marque</router-link></li>
           <li ><router-link to="/contact" class="no-underline">Nous contacter</router-link></li>
+          <li><router-link to="/infosProfil" class="no-underline">Infos Profile</router-link></li>
           <li><router-link to="/faq" class="no-underline">FAQ</router-link></li>
         </ul>
       </nav>

@@ -1,7 +1,9 @@
 class objPhotocreations  {
-    constructor(url, description) {
+    constructor(url, description, nom) {
         this.url = url;
-        this.description = description
+        this.description = description;
+        this.nom = description;
+
     }
 }
 

@@ -81,7 +81,7 @@ const routes= [
         import('../views/NotFound.vue')
   },
   {
-    path:'/suppressionCatalogue',
+    path:'/SuppressionCatalogue',
     name: 'SuppressionCatalogue',
     component: () =>
         import('../views/SuppressionCatalogue.vue')

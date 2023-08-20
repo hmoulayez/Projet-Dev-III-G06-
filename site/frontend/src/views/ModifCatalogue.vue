@@ -87,7 +87,7 @@ export default {
 
   methods: {
     recupCollections() {
-      axios.get('https://serveur.kaboricreations.com/collections')
+      axios.get('https://localhost:3000/collections')
           .then(response => {
             this.collections = response.data;
           })
@@ -118,7 +118,7 @@ export default {
         description: this.nouveldescription,
         prix: this.nouveauPrix
       };
-      axios.post('https://serveur.kaboricreations.com/prod', data)
+      axios.post('https://localhost:3000/prod', data)
           .then(response => {
             console.log(response.data);
           })
