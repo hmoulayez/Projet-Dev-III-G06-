@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Accueil from '../views/Accueil.vue'
-import NotFound from "@/views/NotFound.vue";
 
 const routes= [
   {
@@ -13,18 +12,6 @@ const routes= [
     name: 'Creations',
     component: () =>
         import('../views/Creations.vue')
-  },
-  {
-    path: '/connexion',
-    name: 'Connexion',
-    component: () =>
-        import('../views/Connexion.vue')
-  },
-  {
-    path: '/devis',
-    name: 'Devis',
-    component: () =>
-        import('../views/Devis.vue')
   },
   {
     path: '/services',
@@ -67,42 +54,6 @@ const routes= [
     name: 'Cookies',
     component: () =>
         import('../views/Cookies.vue')
-  },
-  {
-    path: '/modifcatalogue',
-    name: 'ModifCatalogue',
-    component: () =>
-        import('../views/ModifCatalogue.vue')
-  },
-  {
-    path: '/:catchAll(.*)',
-    name: 'Notfound',
-    component: () =>
-        import('../views/NotFound.vue')
-  },
-  {
-    path:'/suppressionCatalogue',
-    name: 'SuppressionCatalogue',
-    component: () =>
-        import('../views/SuppressionCatalogue.vue')
-  },
-  {
-    path:'/ajouterCollectionCateg',
-    name: 'AjouterCollectionCateg',
-    component: () =>
-        import('../views/AjouterCollectionCateg.vue')
-  },
-  {
-    path:'/gestionCommandes',
-    name: 'GestionCommandes',
-    component: () =>
-        import('../views/GestionCommandes.vue')
-  },
-  {
-    path:'/infosprofil',
-    name: 'InfosProfil',
-    component: () =>
-        import('../views/InfosProfil.vue')
   },
 
 ]

@@ -1,18 +1,14 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql');
-const cors = require('cors');
 
-const devisRoutes = require('./routes/devis');
-const connexionRoutes = require('./routes/connexion')
+const bodyParser = require('body-parser');
 
 const app = express();
 
+const mysql = require('mysql');
+
+const cors = require('cors');
+
 const path = require('path');
-
-const avisRoutes = require('./routes/avis');
-
-const clientsRoutes = require('./routes/clients');
 
 const eventRoutes = require('./routes/photoevents');
 
@@ -26,27 +22,29 @@ const prodRoutes = require('./routes/produits');
 
 const contactRoutes = require('./routes/contact');
 
-const commandesRoutes = require('./routes/commandes');
-
-const statutsRoutes = require('./routes/statuts');
 
 //app.use(contactRouter);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-mysql.createConnection({
+
+
+
+const con = mysql.createConnection({
   host: "34.79.25.79",
   user: "root",
   password: "admin",
-  database: "siteKabori"
+  database : "siteKabori"
 });
-// Créer une connexion
-mysql.createPool({
+
+// Créer une connexion pool
+const pool = mysql.createPool({
   host: '34.79.25.79',
   user: 'root',
   password: 'admin',
   database: 'siteKabori',
-  connectionLimit: 100 // Nombre maximal de connexions dans la pool
+  connectionLimit: 10 // Nombre maximal de connexions dans la pool
 });
+
 // Configurer les options CORS
 const corsOptions = {
   origin: '*', // Mettre l'origine autorisée de votre choix, ou '*' pour autoriser toutes les origines
@@ -57,18 +55,20 @@ const corsOptions = {
 // Activer CORS avec les options configurées pour toutes les requêtes
 app.use(cors(corsOptions));
 
-// Différents appels API
-app.use('/avis', avisRoutes);
+//Différents appels API
 app.use('/categ', categRoutes);
-app.use('/clients', clientsRoutes);
-app.use('/collections', collectionsRoutes);
-app.use('/contact', contactRoutes);
+app.use('/collections',collectionsRoutes);
 app.use('/photoevents', eventRoutes);
-app.use('/photocreations', creationsRoutes);
+app.use('/photocreations',creationsRoutes);
 app.use('/prod', prodRoutes);
-app.use('/devis', devisRoutes);
-app.use('/connexion',connexionRoutes)
-app.use('/commandes', commandesRoutes);
-app.use('/statuts', statutsRoutes);
+app.use('/contact', contactRoutes);
 
+
+app.use(express.json());
 module.exports = app;
+
+
+
+
+
+

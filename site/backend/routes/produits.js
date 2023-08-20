@@ -15,10 +15,7 @@ router.get('/:categ/:prix', getProdCategPrix);
 
 router.post('/', postProd);
 
-router.delete('/:nom', deleteProd);
-
-//router.delete('/:nom/:col/:categ', deleteProd);
-
+router.delete('/:nom/:col/:categ', deleteProd);
 
 router.put('/:nom', updateProd);
 
