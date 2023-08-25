@@ -1,10 +1,10 @@
 const mysql = require("mysql");
 const fs = require("fs");
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'sitekabori',
+    host: '15.236.173.35',
+    user: 'admin',
+    password: 'ephecephec',
+    database: 'Kabori',
     connectionLimit: 100 // Nombre maximal de connexions dans la pool
 });
 
@@ -22,7 +22,7 @@ exports.subscribe = (req, res) => {
     // Utilisez le pool pour exécuter des requêtes SQL
 
     // Exemple de requête d'insertion
-    const sql = "INSERT INTO clients (nom, prenom, email, motdepasse, is_admin) VALUES (?, ?, ?, ?, ?)";
+    const sql = "INSERT INTO clients (nom, prénom, email, motdepasse,is_admin) VALUES (?, ?, ?, ?, ?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
         con.query(sql, [nom, prenom, email, motdepasse, is_admin], (err, result, fields) => {
@@ -90,7 +90,7 @@ exports.getClientsPrenom = (req, res) => {
 
     pool.getConnection((err, con) => {
         if (err) throw err;
-        con.query("SELECT * FROM clients WHERE prenom = ?", [prenom], (err, result, fields) => {
+        con.query("SELECT * FROM clients WHERE prénom = ?", [prenom], (err, result, fields) => {
             con.release();
             if (err) throw err;
             res.json(result);
@@ -134,7 +134,7 @@ exports.postClients = (req, res) => {
 
 
     // Requête d'insertion avec des valeurs paramétrées pour éviter les attaques par injection SQL
-    const sql = "INSERT INTO clients (nom,prenom,adresse,email,num,motdepasse) VALUES (?,?,?,?,?,?)";
+    const sql = "INSERT INTO clients (nom,prénom,adresse,email,num,motdepasse) VALUES (?,?,?,?,?,?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
         con.query(sql, [nom,prenom,adresse,email,num,motdepasse], (err, result, fields) => {

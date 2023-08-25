@@ -43,17 +43,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "sitekabori"
+  host: '15.236.173.35',
+  user: 'admin',
+  password: 'ephecephec',
+  database: 'Kabori',
 });
 // Créer une connexion
 mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'sitekabori',
+  host: '15.236.173.35',
+  user: 'admin',
+  password: 'ephecephec',
+  database: 'Kabori',
   connectionLimit: 100 // Nombre maximal de connexions dans la pool
 });
 // Configurer les options CORS
@@ -81,8 +81,7 @@ const upload = multer({ storage: storage })
 app.post("/upload", upload.single("file"), async(req, res) => {
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
-    console.log('Image uploaded:', result);
-    res.send('Image uploaded successfully');
+    res.send({message: 'Image uploaded successfully', result: result });
   } catch (error) {
     console.error('Error uploading image:', error);
     res.status(500).send('Error uploading image');

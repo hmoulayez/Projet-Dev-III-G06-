@@ -1,16 +1,17 @@
 const mysql = require("mysql");
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'sitekabori',
+
+    host: '15.236.173.35',
+    user: 'admin',
+    password: 'ephecephec',
+    database: 'Kabori',
     connectionLimit: 10 // Nombre maximal de connexions dans la pool
 });
 
 exports.getCollections = (req, res) => {
     pool.getConnection((err, con) => {
         if (err) throw err;
-        con.query("SELECT * FROM collections", (err, result, fields) => {
+        con.query("SELECT * FROM collections", (err, result) => {
             con.release();
             if (err) throw err;
             res.json(result);
