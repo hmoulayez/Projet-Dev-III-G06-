@@ -1,10 +1,10 @@
 const mysql = require("mysql");
 const fs = require("fs");
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: ' ',
-    database: 'sitekabori',
+    host: '15.236.173.35',
+    user: 'admin',
+    password: 'ephecephec',
+    database: 'Kabori',
     connectionLimit: 100 // Nombre maximal de connexions dans la pool
 });
 

@@ -27,23 +27,9 @@
         <input type="text" id="model" v-model="model" class="form-input" required>
         <br>
         <label>Description :</label>
-        <textarea id="nouveldescription" v-model="nouveldescription" class="form-text" required></textarea>
+        <textarea id="nouveldescription" v-model ="nouveldescription" class="form-text" required></textarea>
         <br>
-        <label for="photoUrl1">Photo 1 :</label>
-        <input type="text" id="photoUrl1" v-model="photoUrl1" placeholder="URL de la photo" class="form-input" required>
-        <br>
-        <label for="photoUrl2">Photo 2 :</label>
-        <input type="text" id="photoUrl2" v-model="photoUrl2" placeholder="URL de la photo" class="form-input" required>
-        <br>
-        <label for="photoUrl3">Photo 3 :</label>
-        <input type="text" id="photoUrl3" v-model="photoUrl3" placeholder="URL de la photo" class="form-input" required>
-        <br>
-        <label for="photoUrl4">Photo 4 :</label>
-        <input type="text" id="photoUrl4" v-model="photoUrl4" placeholder="URL de la photo" class="form-input" required>
-        <br>
-        <label for="nouveauPrix">Prix :</label>
-        <input type="number" id="nouveauPrix" v-model="nouveauPrix" step="0.01" min="0" class="form-input" required>
-        <br>
+        <input type="file"  @change="handleFileChange" class="from-input">
         <button type="submit" class="form-button">Envoyer</button>
       </form>
     </div>
@@ -70,15 +56,12 @@ export default {
       categ: [],
       model: '',
       nouveldescription: '',
-      photoUrl1: '',
-      photoUrl2: '',
-      photoUrl3: '',
-      photoUrl4: '',
+      file:null,
+      selectedFile: null,
       submitted: false,
       nouveauPrix: null
     }
   },
-
 
   mounted() {
     this.recupCollections();
@@ -86,6 +69,13 @@ export default {
   },
 
   methods: {
+    handleFileChange(event) {
+      const selectedFile = event.target.files[0];
+      if (selectedFile) {
+        this.selectedFile = selectedFile;
+      }
+      console.log(event.target.files[0]);
+    },
     recupCollections() {
       axios.get('https://localhost:3000/collections')
           .then(response => {
@@ -106,8 +96,8 @@ export default {
           })
     },
 
-    submitForm() {
-      const data = {
+    submitForm () {
+       const newModel  = {
         nom: this.model,
         photo1: this.photoUrl1,
         photo2: this.photoUrl2,
@@ -116,15 +106,40 @@ export default {
         categ: this.selectedCateg,
         col: this.selectedCollection,
         description: this.nouveldescription,
-        prix: this.nouveauPrix
+        prix: this.nouveauPrix,
       };
-      axios.post('https://localhost:3000/prod', data)
-          .then(response => {
-            console.log(response.data);
-          })
-          .catch(error => {
-            console.log(error);
-          });
+      console.log('Selected file test:', this.selectedFile);
+      if(this.selectedFile) {
+        let publicId;
+        const data = new FormData();
+        const filename = Date.now() + this.selectedFile.name;
+        data.append("name", filename);
+        data.append("file", this.selectedFile);
+        try {
+          const resultUpload = async () => {
+            const result = await axios.post("http://localhost:3000/upload", data);
+            console.log('result', result.data.result.public_id);
+            publicId = result.data.result.public_id;
+            newModel.url = publicId;
+            console.log(newModel);
+            const addModel = await axios.post("http://localhost:3000/photocreations", newModel);
+            console.log('addModel', addModel);
+            return result;
+          }
+          resultUpload();
+          console.log('publicId');
+          // newModel.url = publicId;
+        } catch (err) {
+          console.log('err', err);
+        }
+      }
+      //axios.post('https://localhost:3000/prod', data)
+         // .then(response => {
+           // console.log(response.data);
+         // })
+         // .catch(error => {
+           // console.log(error);
+        //  });
     },
 
   },
