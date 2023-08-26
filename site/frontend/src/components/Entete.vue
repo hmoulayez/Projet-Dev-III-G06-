@@ -10,7 +10,7 @@
         </v-col>
         <v-col cols="auto" >
           <router-link to="/" class="no-underline">
-            <img id="logo1" class="image" src="https://storage.cloud.google.com/photokabori/Photo%20Polychrome/images/logoNoirOr.png" alt="logo">
+            <img src="logo1.png" alt="Logo" id="logo1" />
           </router-link>
         </v-col>
         <v-col cols="auto" >
