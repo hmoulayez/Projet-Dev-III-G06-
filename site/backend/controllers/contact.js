@@ -4,10 +4,10 @@ const nodemailer = require('nodemailer');
 const fs = require("fs");
 
 const pool = mysql.createPool({
-    host: '15.236.173.35',
-    user: 'admin',
-    password: 'ephecephec',
-    database: 'Kabori',
+    host: '34.79.25.79',
+    user: 'serveur-Kabori',
+    password: 'Pd\\)T23nGB-Tc3RU',
+    database: 'siteKabori',
     connectionLimit: 20
 });
 exports.getContact= (req, res) => {
