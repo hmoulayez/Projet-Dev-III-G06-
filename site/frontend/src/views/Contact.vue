@@ -24,16 +24,16 @@
               <label for="message">Message</label>
               <textarea class="form-control" id="message" rows="5" v-model="form.message" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-animate btn-white" :disabled="isSubmitting">Envoyer</button>
+            <button type="submit" class="btn btn-primary btn-animate btn-white">Envoyer</button>
           </form>
           <div class="mt-5 follow-us">
             <h4>Suivez-nous sur :</h4>
             <div class="social-media-icons">
-              <a href="https://www.facebook.com/yourpage" target="_blank">
-                <img src="Facebook_icon.svg.png" alt="facebook logo" />
+              <a href="https://www.facebook.com/kaboricreations" target="_blank">
+                <img src="https://storage.googleapis.com/photokabori/Photo%20Polychrome/images/Facebook_icon.svg.png" alt="facebook logo" />
               </a>
-              <a href="https://www.instagram.com/yourpage" target="_blank">
-                <img src="insta.png" alt="Instagram logo" />
+              <a href="https://www.instagram.com/kabori_creations/" target="_blank">
+                <img src="https://storage.googleapis.com/photokabori/Photo%20Polychrome/images/insta.png" alt="Instagram logo" />
               </a>
             </div>
           </div>
@@ -78,24 +78,14 @@ export default {
         message: ''
       },
       show: false,
-      success: false,
-      isSubmitting: false
+      success: false
     }
   },
   methods: {
     submitForm () {
-      if (this.isSubmitting) {
-        return; // Si le formulaire est déjà en cours de soumission, ne faites rien
-      }
-
-      // Activez le bouton de soumission
-      this.isSubmitting = true;
-
-      console.log('Formulaire soumis:', this.form); // debugging
-
-      axios.post('http://localhost:3000/contact', this.form)
+      axios.post('https://serveur.kaboricreations.com/contact', this.form)
           .then(response => {
-            console.log('Réponse du serveur:', response); // debugging
+            console.log(response);
             this.show = true;
             this.success = true;
             this.form.name = '';
@@ -107,17 +97,11 @@ export default {
             console.error('Erreur lors de l\'envoi du message:', error);
             this.show = true;
             this.success = false;
-          })
-          .finally(() => {
-            // Désactiver le bouton de soumission après la soumission
-            this.isSubmitting = false;
           });
     }
   }
 }
 </script>
-
-
 
 <style scoped>
 #contact {

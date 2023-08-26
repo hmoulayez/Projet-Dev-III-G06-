@@ -9,9 +9,9 @@ const pool = mysql.createPool({
     connectionLimit: 100 // Nombre maximal de connexions dans la pool
 });
 cloudinary.config({
-    cloud_name: 'dzjkkji1x',
-    api_key: '727472496856648',
-    api_secret: 'Tz7ubFf436pqqYFgI3XYbCIoVj0'
+    cloud_name: 'dhsfpkkqj',
+    api_key: '436354294995913',
+    api_secret: 'M2uDXuvaSQkMsJaBReM3yqaZ--E'
 });
 
 exports.getPhotocreations = (req, res) => {

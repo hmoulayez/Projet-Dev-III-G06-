@@ -29,8 +29,7 @@
             <textarea class="form-control" id="remarque" name="remarque" rows="4" v-model="remarque" autocomplete="on"></textarea>
           </div>
 
-          <button type="submit" class="btn btn-envoyer" :disabled="isSubmitting">Envoyer</button>
-
+          <button type="submit" class="btn btn-envoyer">Envoyer</button>
         </form>
         <div class="col-md-6">
           <div>
@@ -61,58 +60,52 @@ export default {
       remarque: "",
       models: [],
       demandeEnvoyee: false,
-      isSubmitting: false // Variable pour désactiver le bouton de soumission pendant la soumission
     };
   },
   mounted() {
-    this.recupModels(); // Appel pour récupérer les modèles au montage du composant
+    this.recupModels();
   },
   methods: {
     recupModels() {
       axios
-          .get("http://localhost:3000/prod/")
+          .get("https://serveur.kaboricreations.com/prod/")
           .then((response) => {
-            // Traitement des données reçues pour récupérer les noms des modèles
             this.models = response.data.map((prod) => prod.nom);
-            console.log("Models récupérés :", this.models); // debugging
           })
           .catch((error) => {
-            console.error(
-                "Erreur lors de la récupération de la liste des modèles:",
-                error
-            );
+            console.error("Erreur lors de la récupération de la liste des modèles:", error);
           });
     },
-    async envoyerDemandeDevis() {
-      if (this.isSubmitting) {
-        return; // Si le formulaire est déjà en cours de soumission, ne rien faire
-      }
-
-      this.isSubmitting = true; // Activer le bouton de soumission
-
+    envoyerDemandeDevis() {
       const demande = {
         nom: this.nom,
         email: this.email,
         modele: this.modele,
-        remarque: this.remarque
+        remarque: this.remarque,
       };
 
-      try {
-        await axios.post("http://localhost:3000/devis", demande); // Envoyer la demande de devis
-        this.demandeEnvoyee = true; // Marquer la demande comme envoyée avec succès
-        console.log("Demande de devis envoyée avec succès !"); // debugging
-      } catch (error) {
-        console.error(
-            "Erreur lors de l'envoi de la demande de devis :", error
-        );
-      } finally {
-        this.isSubmitting = false; // Désactiver le bouton de soumission après la soumission (réussie ou échouée)
-      }
-    }
-  }
+      axios
+          .post("https://serveur.kaboricreations.com/devis", demande)
+          .then(() => {
+            console.log("Demande de devis envoyée !");
+            this.nom = "";
+            this.email = "";
+            this.modele = "";
+            this.remarque = "";
+            this.demandeEnvoyee = true;
+          })
+          .catch((error) => {
+            console.error("Erreur lors de l'envoi de la demande de devis :", error);
+            this.nom = "";
+            this.email = "";
+            this.modele = "";
+            this.remarque = "";
+            this.demandeEnvoyee = true;
+          });
+    },
+  },
 };
 </script>
-
 
 <style scoped>
 .devis-formulaire {
