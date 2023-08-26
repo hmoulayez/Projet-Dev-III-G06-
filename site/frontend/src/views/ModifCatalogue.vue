@@ -10,7 +10,7 @@
         <p>
           Choisissez une collection
           <select v-model="selectedCollection" class="custom-select">
-            <option v-for="collection in collections" :key="collection.id" :value="collection.nom">{{ collection.nom }}</option>
+            <option v-for="collection in this.collections" :key="collection.id" :value="collection.nom">{{ collection.nom }}</option>
           </select>
           <br>
         </p>
@@ -77,7 +77,7 @@ export default {
       console.log(event.target.files[0]);
     },
     recupCollections() {
-      axios.get('https://localhost:3000/collections')
+      axios.get('http://localhost:3000/collections')
           .then(response => {
             this.collections = response.data;
           })
@@ -107,8 +107,10 @@ export default {
         col: this.selectedCollection,
         description: this.nouveldescription,
         prix: this.nouveauPrix,
+         collection: this.selectedCollection,
       };
       console.log('Selected file test:', this.selectedFile);
+      console.log('select collection:', this.selectedCollection);
       if(this.selectedFile) {
         let publicId;
         const data = new FormData();

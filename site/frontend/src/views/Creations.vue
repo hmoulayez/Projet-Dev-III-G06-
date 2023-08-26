@@ -39,9 +39,10 @@
                     {{model.description}}
                   </p><br>
                   <div class="imgModel">
-                    <div class="photo" v-for="photo in photos.slice(2,7)"  :key="photo.id" >
+                <!-- div class="photo" v-for="photo in photos.slice(2,7)"  :key="photo.id" -->
+                    <div class="photo">
                       <button @click="overlay = !overlay; overlayImg=photo" >
-                        <img :src=photo alt="image1"/>
+                        <img :src="getCloudinaryUrl(model.url)" alt="Cloudinary Image">
                       </button>
 
                       <v-overlay v-if="overlay" v-model="overlay"  class="overlay">
@@ -74,6 +75,8 @@
 import Entete from "@/components/Entete.vue";
 import BasDePage from "@/components/BasDePage.vue";
 import axios from 'axios';
+import cloudinary from 'cloudinary-core';
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   data() {
@@ -94,7 +97,7 @@ export default {
   },
   methods: {
     recupCollections() {
-      axios.get('https://serveur.kaboricreations.com/collections')
+      axios.get('http://localhost:3000/collections')
           .then(response => {
             this.collections = response.data;
           })
@@ -104,10 +107,7 @@ export default {
     },
     recupModels(collection) {
 
-      axios.get('https://serveur.kaboricreations.com/prod/' ,{
-        params:{
-          col: collection
-        }})
+      axios.get(`http://localhost:3000/photocreations?collection=${collection}`)
           .then(response => {
             this.models = response.data;
           })
@@ -117,7 +117,12 @@ export default {
     },
     recuPhoto(photo){
       this.photos = Object.values(photo);
-    }
+    },
+
+    getCloudinaryUrl(publicId) {
+      const cl = new cloudinary.Cloudinary({ cloud_name: 'dhsfpkkqj' });
+      return cl.url(publicId);
+    },
   },
 
   // e

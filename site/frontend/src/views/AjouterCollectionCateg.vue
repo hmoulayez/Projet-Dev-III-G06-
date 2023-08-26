@@ -64,14 +64,25 @@ export default {
         nom: this.nomCollection,
         description: this.descriptionCollection
       };
-      axios.post('https://localhost:3000/collections', data)
-          .then(response => {
-            console.log(response.data);
-            this.recupCollections();
-          })
-          .catch(error => {
-            console.error(error);
-          });
+      const result = async () => {
+        console.log('hello');
+        const res = await axios.post('http://localhost:3000/collections', {
+          nom: this.nomCollection,
+          description: this.descriptionCollection
+        });
+        console.log('result axios', res);
+
+        return res;
+      }
+      result();
+     // axios.post('http://localhost:3000/collections', data)
+          //.then(response => {
+           //console.log(response.data);
+            // this.recupCollections();
+         // })
+        //  .catch(error => {
+            //console.error(error);
+        //  });
     },
 
     addCateg(){
