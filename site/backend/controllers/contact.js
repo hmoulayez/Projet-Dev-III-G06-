@@ -1,3 +1,4 @@
+
 const mysql = require("mysql");
 const nodemailer = require('nodemailer');
 const fs = require("fs");
@@ -9,22 +10,12 @@ const pool = mysql.createPool({
     database: 'Kabori',
     connectionLimit: 20
 });
-
-exports.getContact = (req, res) => {
+exports.getContact= (req, res) => {
     pool.getConnection((err, con) => {
-        if (err) {
-            console.error("Erreur de connexion à la base de données :", err);
-            res.status(500).json({ message: "Erreur de connexion à la base de données" });
-            return;
-        }
-
+        if (err) throw err;
         con.query("SELECT * FROM contact", (err, result) => {
             con.release();
-            if (err) {
-                console.error("Erreur lors de la récupération des contacts :", err);
-                res.status(500).json({ message: "Erreur lors de la récupération des contacts" });
-                return;
-            }
+            if (err) throw err;
             res.json(result);
         });
     });
@@ -37,19 +28,17 @@ exports.postContact = (req, res) => {
     const message = req.body.message;
 
     const sql = "INSERT INTO contact (name, email, phone, message) VALUES (?, ?, ?, ?)";
-
     pool.getConnection((err, con) => {
         if (err) {
-            console.error("Erreur de connexion à la base de données :", err);
-            res.status(500).json({ message: "Erreur de connexion à la base de données" });
+            console.log(err);
+            res.status(500).send('Erreur lors de la connexion à la base de données');
             return;
         }
-
         con.query(sql, [name, email, phone, message], (err) => {
             con.release();
             if (err) {
-                console.error("Erreur lors de l'insertion des données dans la base de données :", err);
-                res.status(500).json({ message: "Erreur lors de l'insertion des données dans la base de données" });
+                console.log(err);
+                res.status(500).send('Erreur lors de l\'insertion des données dans la base de données');
                 return;
             }
             sendEmail(name, email, message, res);
@@ -59,12 +48,12 @@ exports.postContact = (req, res) => {
 
 function sendEmail(name, email, message, res) {
     const transporter = nodemailer.createTransport({
-        host: 'smtp-mail.outlook.com',
+        host: 'smtp-mail.outlook.com', // l'exemple de la structure de mail si c gmail tu change
         port: 587,
         secure: false,
         auth: {
-            user: 'sitekabori@outlook.fr',
-            pass: 'Kabori123@',
+            user: 'sitekabori@outlook.fr', // tu met ton mail et le mot de passe et je te conseille que tu fais un autre mail que tu utlises pas
+            pass: 'Tostos123@', // le mot de passe
         },
         tls: {
             ciphers: 'SSLv3'
@@ -72,11 +61,11 @@ function sendEmail(name, email, message, res) {
     });
 
     const mailOptions = {
-        from: 'sitekabori@outlook.fr',
-        to: 'chennaouimarwa0@gmail.com',
+        from: 'sitekabori@outlook.fr' , // ton mail
+        to: 'chennaouimarwa0@gmail.com', // le mail de la creatrice.
         subject: 'Nouveau message de formulaire de contact',
         html: `
-            <p>Nouveau message de formulaire de contact:</p>
+            <p>Nouveau message de formulaire de contact:</p> // le contenu du mailS
             <ul>
                 <li><strong>Nom:</strong> ${name}</li>
                 <li><strong>E-mail:</strong> ${email}</li>
@@ -88,10 +77,10 @@ function sendEmail(name, email, message, res) {
     transporter.sendMail(mailOptions)
         .then((info) => {
             console.log('Message envoyé: %s', info.messageId);
-            res.json({ message: 'Le message a été envoyé avec succès.' });
+            res.json({message: 'Le message a été envoyé avec succès.'});
         })
         .catch((error) => {
-            console.error("Erreur lors de l'envoi du message :", error);
-            res.status(500).json({ message: "Une erreur est survenue lors de l'envoi du message." });
+            console.log(error);
+            res.status(500).json({message: 'Une erreur est survenue lors de l\'envoi du message.'});
         });
 }
