@@ -88,10 +88,8 @@ export default {
             motdepasse: this.password,
             is_admin:this.is_admin,
           });
-
           console.log('result axios', res);
             if (this.is_admin) {
-              localStorage.setItem('user', JSON.stringify(({is_admin: true, is_connected: true})));
               this.$router.push('/modifcatalogue')
             }
             else {
