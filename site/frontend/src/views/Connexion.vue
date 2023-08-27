@@ -124,7 +124,8 @@ export default {
           return res;
     
         }
-      } else {
+      }}
+        else {
         try {
           const response = await axios.post('http://localhost:3000/clients/subscribe', {
             nom: this.firstName,
