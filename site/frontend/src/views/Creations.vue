@@ -38,21 +38,15 @@
                   <p class="descModel">
                     {{model.description}}
                   </p><br>
-                  <div class="imgModel">
-                    <!-- div class="photo" v-for="photo in photos.slice(2,7)"  :key="photo.id" -->
+                  <div class="imgModel" @click="toggleOverlay(getCloudinaryUrl(model.url))">
                     <div class="photo">
-                      <button @click="overlay = !overlay; overlayImg=photo" >
-                        <img :src="getCloudinaryUrl(model.url)" alt="Cloudinary Image">
-                      </button>
-
-                      <v-overlay v-if="overlay" v-model="overlay"  class="overlay">
-                        <button @click="overlay = !overlay">
-                          <img :src=overlayImg alt="image1" class="overlayImg"/>
-                        </button>
-                      </v-overlay>
-
+                      <img :src="getCloudinaryUrl(model.url)" alt="Cloudinary Image">
                     </div>
                   </div>
+                  <div v-if="showOverlay" class="overlay" @click="toggleOverlay(null)">
+                    <img :src="currentImage" alt="Cloudinary Image">
+                  </div>
+
                   <router-link to="/devis" class="no-underline">
                     <v-btn color="yellow darken-2" >Demander un devis</v-btn>
                   </router-link>
@@ -89,6 +83,8 @@ export default {
       model1: 1,
       overlay: false,
       overlayImg:"",
+      showOverlay: false,
+      currentImage: null,
     }
   },
 
@@ -122,6 +118,11 @@ export default {
     getCloudinaryUrl(publicId) {
       const cl = new cloudinary.Cloudinary({ cloud_name: 'dzjkkji1x' });
       return cl.url(publicId);
+    },
+
+    toggleOverlay(imageUrl) {
+      this.currentImage = imageUrl;
+      this.showOverlay = !this.showOverlay;
     },
   },
 
@@ -178,7 +179,7 @@ h1,h2, p {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 50%;
+  width: 80%;
 
 
 }
@@ -200,13 +201,6 @@ h1,h2, p {
   justify-content: center;
   align-content: center;
 }
-.overlayImg{
-  height: auto;
-  width: 35%;
-  justify-content: center;
-  align-content: center;
-
-}
 .overlay{
   text-align: center;
   height: auto;
@@ -217,6 +211,24 @@ h1,h2, p {
 .corps {
   background-image: url("https://storage.googleapis.com/photokabori/croquis/IMG_7311-min.JPG");
   background-size: 100%;
-  min-height: 100%;
+  color: black;
+  margin: 5%
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overlay img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 </style>

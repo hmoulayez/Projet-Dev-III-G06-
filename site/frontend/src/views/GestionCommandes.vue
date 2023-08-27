@@ -24,7 +24,6 @@
       <th>Comentaire</th>
       <th>Prix</th>
       <th>Statut</th>
-      <th>Changer Statut</th>
       <th> </th>
     </tr>
     </thead>
@@ -41,9 +40,8 @@
         <button @click="publierTexte(commande)" class="td-button">Modifier</button>
       </td>
       <td>{{ commande.prix }}</td>
-      <td>{{ commande.statut }}</td>
       <td>
-        <select v-model="selectedStatut" @change="envoyerStatut(commande)" class="custom-select">
+        <select v-model="commande.statut" @change="envoyerStatut(commande)" class="custom-select">
           <option v-for="statut in statuts" :key="statut.nom" :value="statut.nom">{{ statut.nom }}</option>
         </select>
       </td>
@@ -175,6 +173,22 @@ export default {
       return dateStr.slice(0, 10);
     },
 
+    envoyerStatut(commande) {
+      console.log(commande.id);
+      console.log(commande.statut);
+
+      const data = {
+        id: commande.id,
+        statut: commande.statut
+      };
+      axios.put('http://localhost:3000/commandes/statut/', data)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    },
 
   },
 
