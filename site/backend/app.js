@@ -27,15 +27,15 @@ const prodRoutes = require('./routes/produits');
 
 const contactRoutes = require('./routes/contact');
 
-//const commandesRoutes = require('./routes/commandes');
+const commandesRoutes = require('./routes/commandes');
 
-//const statutsRoutes = require('./routes/statuts');
+const statutsRoutes = require('./routes/statuts');
 
 const subscribeRoutes = require('./routes/clients');
 cloudinary.config({
-  cloud_name: 'dhsfpkkqj',
-  api_key: '436354294995913',
-  api_secret: 'M2uDXuvaSQkMsJaBReM3yqaZ--E'
+  cloud_name: 'dzjkkji1x',
+  api_key: '727472496856648',
+  api_secret: 'Tz7ubFf436pqqYFgI3XYbCIoVj0'
 });
 
 //app.use(contactRouter);
@@ -80,7 +80,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 app.post("/upload", upload.single("file"), async(req, res) => {
   try {
-    const result = await cloudinary.uploader.upload(req.file.path);
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      transformation: [
+        { fetch_format: 'auto'},
+        { quality: 'auto' }
+      ]
+    });
     res.send({message: 'Image uploaded successfully', result: result });
   } catch (error) {
     console.error('Error uploading image:', error);
@@ -98,8 +103,8 @@ app.use('/photocreations', creationsRoutes);
 app.use('/prod', prodRoutes);
 app.use('/devis', devisRoutes);
 //app.use('/connexion',connexionRoutes)
-//app.use('/commandes', commandesRoutes);
-//app.use('/statuts', statutsRoutes);
+app.use('/commandes', commandesRoutes);
+app.use('/statuts', statutsRoutes);
 app.use('/subscribe', subscribeRoutes);
 
 module.exports = app;

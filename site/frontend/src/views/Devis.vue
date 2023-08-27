@@ -68,7 +68,7 @@ export default {
   methods: {
     recupModels() {
       axios
-          .get("https://serveur.kaboricreations.com/prod/")
+          .get("http://localhost:3000/photocreations/")
           .then((response) => {
             this.models = response.data.map((prod) => prod.nom);
           })
@@ -85,7 +85,7 @@ export default {
       };
 
       axios
-          .post("https://serveur.kaboricreations.com/devis", demande)
+          .post("http://localhost:3000/devis", demande)
           .then(() => {
             console.log("Demande de devis envoyée !");
             this.nom = "";

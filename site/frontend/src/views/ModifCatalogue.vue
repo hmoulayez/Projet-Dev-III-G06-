@@ -10,7 +10,7 @@
         <p>
           Choisissez une collection
           <select v-model="selectedCollection" class="custom-select">
-            <option v-for="collection in collections" :key="collection.id" :value="collection.nom">{{ collection.nom }}</option>
+            <option v-for="collection in this.collections" :key="collection.id" :value="collection.nom">{{ collection.nom }}</option>
           </select>
           <br>
         </p>
@@ -30,7 +30,7 @@
         <textarea id="nouveldescription" v-model ="nouveldescription" class="form-text" required></textarea>
         <br>
         <input type="file"  @change="handleFileChange" class="from-input">
-        <button type="submit" class="form-button">Envoyer</button>
+        <button type="submit" class="form-button" :disabled="isSubmitting">Envoyer</button>
       </form>
     </div>
   </main>
@@ -59,7 +59,8 @@ export default {
       file:null,
       selectedFile: null,
       submitted: false,
-      nouveauPrix: null
+      nouveauPrix: null,
+      isSubmitting: false,
     }
   },
 
@@ -77,7 +78,7 @@ export default {
       console.log(event.target.files[0]);
     },
     recupCollections() {
-      axios.get('https://localhost:3000/collections')
+      axios.get('http://localhost:3000/collections')
           .then(response => {
             this.collections = response.data;
           })
@@ -87,7 +88,7 @@ export default {
     },
 
     recupCateg() {
-      axios.get('https://serveur.kaboricreations.com/categ')
+      axios.get('http://localhost:3000/categ')
           .then(response => {
             this.categ = response.data;
           })
@@ -96,8 +97,10 @@ export default {
           })
     },
 
-    submitForm () {
-       const newModel  = {
+    async submitForm() {
+      this.isSubmitting = true;// bloque boutton
+
+      const newModel = {
         nom: this.model,
         photo1: this.photoUrl1,
         photo2: this.photoUrl2,
@@ -107,40 +110,47 @@ export default {
         col: this.selectedCollection,
         description: this.nouveldescription,
         prix: this.nouveauPrix,
+        collection: this.selectedCollection,
       };
-      console.log('Selected file test:', this.selectedFile);
-      if(this.selectedFile) {
-        let publicId;
+
+      if (this.selectedFile) {
         const data = new FormData();
         const filename = Date.now() + this.selectedFile.name;
         data.append("name", filename);
         data.append("file", this.selectedFile);
+
         try {
-          const resultUpload = async () => {
-            const result = await axios.post("http://localhost:3000/upload", data);
-            console.log('result', result.data.result.public_id);
-            publicId = result.data.result.public_id;
-            newModel.url = publicId;
-            console.log(newModel);
-            const addModel = await axios.post("http://localhost:3000/photocreations", newModel);
-            console.log('addModel', addModel);
-            return result;
-          }
-          resultUpload();
-          console.log('publicId');
-          // newModel.url = publicId;
+          const result = await axios.post("http://localhost:3000/upload", data);
+          const publicId = result.data.result.public_id;
+          newModel.url = publicId;
+          const addModel = await axios.post("http://localhost:3000/photocreations", newModel);
+
+          console.log('addModel', addModel);
+
+          this.resetForm(); // vide formulaire
+
         } catch (err) {
-          console.log('err', err);
+          console.error('err', err);
+        } finally {
+          this.isSubmitting = false; //débloque boutton
         }
       }
-      //axios.post('https://localhost:3000/prod', data)
-         // .then(response => {
-           // console.log(response.data);
-         // })
-         // .catch(error => {
-           // console.log(error);
-        //  });
     },
+
+    resetForm() {
+      this.model = '';
+      this.photoUrl1 = '';
+      this.photoUrl2 = '';
+      this.photoUrl3 = '';
+      this.photoUrl4 = '';
+      this.selectedCateg = '';
+      this.selectedCollection = '';
+      this.nouveldescription = '';
+      this.nouveauPrix = '';
+      this.selectedFile = null;
+    }
+
+
 
   },
 

@@ -64,8 +64,11 @@ export default {
         nom: this.nomCollection,
         description: this.descriptionCollection
       };
-      axios.post('https://localhost:3000/collections', data)
-          .then(response => {
+      this.nomCollection = '';
+      this.descriptionCollection = '';
+      axios
+          .post('http://localhost:3000/collections', data)
+          .then(() => {
             console.log(response.data);
             this.recupCollections();
           })
@@ -79,7 +82,9 @@ export default {
         nom: this.nomCateg,
         description: this.descriptionCateg
       };
-      axios.post('https://localhost:3000/categ', data )
+      this.nomCateg = '';
+      this.descriptionCateg = '';
+      axios.post('http://localhost:3000/categ', data )
           .then(response => {
             console.log(response.data);
             this.recupCateg();
