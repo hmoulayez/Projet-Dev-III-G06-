@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     submitForm () {
-      axios.post('https://serveur.kaboricreations.com/contact', this.form)
+      axios.post('http://localhost:3000/contact', this.form)
           .then(response => {
             console.log(response);
             this.show = true;
