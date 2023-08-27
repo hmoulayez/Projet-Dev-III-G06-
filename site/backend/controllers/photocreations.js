@@ -9,15 +9,21 @@ const pool = mysql.createPool({
     connectionLimit: 100 // Nombre maximal de connexions dans la pool
 });
 cloudinary.config({
-    cloud_name: 'dhsfpkkqj',
-    api_key: '436354294995913',
-    api_secret: 'M2uDXuvaSQkMsJaBReM3yqaZ--E'
+    cloud_name: 'dzjkkji1x',
+    api_key: '727472496856648',
+    api_secret: 'Tz7ubFf436pqqYFgI3XYbCIoVj0'
 });
 
 exports.getPhotocreations = (req, res) => {
     pool.getConnection((err, con) => {
+        let sql = '';
+        if (req.query.collection) {
+            sql = "SELECT * FROM photocreations where collections = ?"
+        } else {
+            sql = "SELECT * from photocreations";
+        }
         if (err) throw err;
-        con.query("SELECT * FROM photocreations", (err, result, fields) => {
+        con.query(sql, [req.query.collection], (err, result, fields) => {
             con.release();
             if (err) throw err;
             res.json(result);
@@ -30,19 +36,20 @@ exports.postPhotocreations =  (req, res) => {
 
     const PublicId = req.body.url;
     const description = req.body.description;
-    const nom = req.body.nom;
+    const nom = req.body.nom
+    const collection = req.body.collection;
 
     // Requête d'insertion avec des valeurs paramétrées pour éviter les attaques par injection SQL
     const sql = "INSERT INTO photocreations (url, description, nom) VALUES (?, ?, ?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
-        con.query("INSERT INTO photocreations (url,nom,description) VALUES (?,?,?)", [PublicId, nom, description], (err, result, fields) => {
+        con.query("INSERT INTO photocreations (url,nom,description,collections) VALUES (?,?,?,?)", [PublicId, nom, description, collection], (err, result, fields) => {
             con.release();
             if (err) throw err;
             res.json(result);
         });
     });
- };
+};
 
 exports.deletePhotocreations = (req, res) => {
     // Récupération des valeurs depuis le corps de la requête
