@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     user: 'admin',
     password: 'ephecephec',
     database: 'Kabori',
-    connectionLimit: 101 // Nombre maximal de connexions dans la pool
+    connectionLimit: 10 // Nombre maximal de connexions dans la pool
 });
 
 exports.getPhotoevents = (req, res) => {

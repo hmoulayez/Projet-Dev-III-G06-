@@ -106,6 +106,23 @@ export default {
         } else {
           localStorage.setItem('user', JSON.stringify(({ is_admin: false, is_connected: true })));
           this.$router.push('/');
+        //this.performConnexion();
+        const result = async () => {
+          console.log('hello');
+          const res = await axios.post('http://localhost:3000/clients/connexion', {
+            email: this.email,
+            motdepasse: this.password,
+            is_admin:this.is_admin,
+          });
+          console.log('result axios', res);
+            if (this.is_admin) {
+              this.$router.push('/modifcatalogue')
+            }
+            else {
+              this.$router.push('/modifcatalogue')
+            }
+          return res;
+    
         }
       } else {
         try {

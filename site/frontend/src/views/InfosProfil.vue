@@ -88,7 +88,7 @@ export default {
 
   methods: {
     recupCommandes() {
-      axios.get('https://serveur.kaboricreations.com/commandes/')
+      axios.get('http://localhost:3000/commandes/')
           .then(response => {
             this.commandes = response.data;
           })
@@ -98,7 +98,7 @@ export default {
     },
 
     recupInfosClient(){
-      axios.get('https://serveur.kaboricreations.com/clients/')
+      axios.get('http://localhost:3000/clients/')
           .then(response => {
             this.client = response.data;
           })

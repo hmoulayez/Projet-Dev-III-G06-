@@ -64,25 +64,17 @@ export default {
         nom: this.nomCollection,
         description: this.descriptionCollection
       };
-      const result = async () => {
-        console.log('hello');
-        const res = await axios.post('http://localhost:3000/collections', {
-          nom: this.nomCollection,
-          description: this.descriptionCollection
-        });
-        console.log('result axios', res);
-
-        return res;
-      }
-      result();
-     // axios.post('http://localhost:3000/collections', data)
-          //.then(response => {
-           //console.log(response.data);
-            // this.recupCollections();
-         // })
-        //  .catch(error => {
-            //console.error(error);
-        //  });
+      this.nomCollection = '';
+      this.descriptionCollection = '';
+      axios
+          .post('http://localhost:3000/collections', data)
+          .then(() => {
+            console.log(response.data);
+            this.recupCollections();
+          })
+          .catch(error => {
+            console.error(error);
+          });
     },
 
     addCateg(){
@@ -90,7 +82,9 @@ export default {
         nom: this.nomCateg,
         description: this.descriptionCateg
       };
-      axios.post('https://localhost:3000/categ', data )
+      this.nomCateg = '';
+      this.descriptionCateg = '';
+      axios.post('http://localhost:3000/categ', data )
           .then(response => {
             console.log(response.data);
             this.recupCateg();

@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     user: 'admin',
     password: 'ephecephec',
     database: 'Kabori',
-    connectionLimit: 100 // Nombre maximal de connexions dans la pool
+    connectionLimit: 10 // Nombre maximal de connexions dans la pool
 });
 
 exports.getCateg = (req, res) => {

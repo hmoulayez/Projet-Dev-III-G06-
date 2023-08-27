@@ -6,24 +6,15 @@ const pool = mysql.createPool({
     user: 'admin',
     password: 'ephecephec',
     database: 'Kabori',
-    connectionLimit: 120
+    connectionLimit: 100
 });
 
 exports.getDevis = (req, res) => {
     pool.getConnection((err, con) => {
-        if (err) {
-            console.error("Erreur de connexion à la base de données :", err);
-            res.status(500).json({ message: "Erreur de connexion à la base de données" });
-            return;
-        }
-
+        if (err) throw err;
         con.query("SELECT * FROM commandes", (err, result) => {
             con.release();
-            if (err) {
-                console.error("Erreur lors de la récupération des commandes :", err);
-                res.status(500).json({ message: "Erreur lors de la récupération des commandes" });
-                return;
-            }
+            if (err) throw err;
             res.json(result);
         });
     });
@@ -40,16 +31,15 @@ exports.postDevis = (req, res) => {
 
     pool.getConnection((err, con) => {
         if (err) {
-            console.error("Erreur de connexion à la base de données :", err);
-            res.status(500).json({ message: "Erreur de connexion à la base de données" });
+            console.log(err);
+            res.status(500).send('Erreur lors de la connexion à la base de données');
             return;
         }
-
         con.query(sql, [client, emailclient, produit, descriptionClient, statut], (err) => {
             con.release();
             if (err) {
-                console.error("Erreur lors de l'insertion des données dans la base de données :", err);
-                res.status(500).json({ message: "Erreur lors de l'insertion des données dans la base de données" });
+                console.log(err);
+                res.status(500).send('Erreur lors de l\'insertion des données dans la base de données');
                 return;
             }
             sendEmail(client, emailclient, produit, descriptionClient, statut, res);
@@ -88,8 +78,11 @@ function sendEmail(client, emailclient, produit, descriptionClient, statut, res)
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.error("Erreur lors de l'envoi de l'e-mail :", error);
-            res.status(500).json({ message: "Une erreur est survenue lors de l'envoi de la commande." });
+            if (res && typeof res.status === "function") {
+                res.status(500).json({ message: "Une erreur est survenue lors de l'envoi de la commande." });
+            } else {
+                console.error("Erreur lors de l'envoi de la commande :", error);
+            }
         } else {
             console.log('Message envoyé: %s', info.messageId);
             res.json({ message: 'La commande a été envoyée avec succès.' });

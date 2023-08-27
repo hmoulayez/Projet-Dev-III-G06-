@@ -48,3 +48,19 @@ exports.updateStatut = (req, res) => {
         });
     });
 };
+
+exports.deleteCommandes = (req, res) => {
+    // Récupération des valeurs depuis le corps de la requête
+    const id = req.params.id;
+
+    // Suppression sur base du nom de la collection ou de la catégorie
+    const sql = "DELETE FROM commandes WHERE (id = ?)";
+    pool.getConnection((err, con) => {
+        if (err) throw err;
+        con.query(sql, [id], (err, result, fields) => {
+            con.release();
+            if (err) throw err;
+            res.json(result);
+        });
+    });
+};

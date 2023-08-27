@@ -49,7 +49,7 @@ exports.postPhotocreations =  (req, res) => {
             res.json(result);
         });
     });
- };
+};
 
 exports.deletePhotocreations = (req, res) => {
     // Récupération des valeurs depuis le corps de la requête
