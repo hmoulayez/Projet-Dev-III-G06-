@@ -9,17 +9,20 @@
           <h1 class="login-title">{{ mode === 'connexion' ? 'Connexion' : 'Inscription' }}</h1>
           <form class="login-form" @submit.prevent="submitForm">
             <div class="form-group">
-              <div> <label class="switch">
-                <input type="checkbox" v-model="is_admin">
-                <span class="slider round"></span>
-              </label> </div>
+              <div>
+                <label class="switch">
+                  <input type="checkbox" v-model="is_admin">
+                  <span class="slider round"></span>
+                </label>
+              </div>
               <div class="form-group" v-if="mode !== 'connexion'">
-              <label for="email">Nom :</label>
-              <input type="text" id="text" v-model="firstName" required>
-              </div> </div>
-            <div class="form-group" v-if="mode !== 'connexion'">
-              <label for="email">Prenom :</label>
-              <input type="text" id="text" v-model="lastName" required>
+                <label for="firstName">Nom :</label>
+                <input type="text" id="firstName" v-model="firstName" required>
+              </div>
+              <div class="form-group" v-if="mode !== 'connexion'">
+                <label for="lastName">Prénom :</label>
+                <input type="text" id="lastName" v-model="lastName" required>
+              </div>
             </div>
             <div class="form-group">
               <label for="email">Adresse email :</label>
@@ -38,6 +41,7 @@
             </button>
           </form>
           <div class="signup-link">
+            <div class="error-message">{{ error }}</div>
             <p>
               {{ mode === 'connexion' ? "Vous n'avez pas de compte ?" : "Vous avez déjà un compte ?" }}
               <a href="#" @click="switchMode">{{ mode === 'connexion' ? 'Créer un compte' : 'Se connecter' }}</a>
@@ -50,7 +54,6 @@
       <BasDePage/>
     </footer>
   </div>
-
 </template>
 
 <script>
@@ -59,7 +62,6 @@ import Entete from "@/components/Entete.vue";
 import BasDePage from "@/components/BasDePage.vue";
 
 export default {
-
   name: "LoginPage",
   components: { Entete, BasDePage },
   data() {
@@ -70,67 +72,63 @@ export default {
       confirmPassword: "",
       firstName: "",
       lastName: "",
-      is_admin:false,
+      is_admin: false,
+      error: ""
     };
   },
-
   methods: {
     switchMode() {
       this.mode = this.mode === "connexion" ? "creation" : "connexion";
+      this.clearForm();
     },
-    submitForm() {
+    clearForm() {
+      this.email = "";
+      this.password = "";
+      this.confirmPassword = "";
+      this.firstName = "";
+      this.lastName = "";
+      this.is_admin = false;
+      this.error = "";
+    },
+    async submitForm() {
       if (this.mode === "connexion") {
-        //this.performConnexion();
-        const result = async () => {
-          console.log('hello');
-          const res = await axios.post('http://localhost:3000/clients/connexion', {
-            email: this.email,
-            motdepasse: this.password,
-            is_admin:this.is_admin,
-          });
+        const response = await axios.post('http://localhost:3000/clients/connexion', {
+          email: this.email,
+          motdepasse: this.password,
+          is_admin: this.is_admin,
+        });
 
-          console.log('result axios', res);
-            if (this.is_admin) {
-              localStorage.setItem('user', JSON.stringify(({is_admin: true, is_connected: true})));
-              this.$router.push('/modifcatalogue')
-            }
-            else {
-              this.$router.push('/modifcatalogue')
-            }
-          return res;
+        if (response.data.message === 'Identifiants incorrects') {
+          this.error = "Identifiants incorrects. Veuillez réessayer.";
+        } else if (this.is_admin) {
+          localStorage.setItem('user', JSON.stringify(({ is_admin: true, is_connected: true })));
+          this.$router.push('/modifcatalogue');
+        } else {
+          localStorage.setItem('user', JSON.stringify(({ is_admin: false, is_connected: true })));
+          this.$router.push('/');
         }
-        result();
       } else {
-        const result = async () => {
-          console.log('hello');
-          const res = await axios.post('http://localhost:3000/clients/subscribe', {
+        try {
+          const response = await axios.post('http://localhost:3000/clients/subscribe', {
             nom: this.firstName,
             prenom: this.lastName,
             email: this.email,
             motdepasse: this.password,
-            is_admin:this.is_admin,
+            is_admin: this.is_admin,
           });
-          console.log('result axios', res);
-          return res;
+          console.log('response', response);
+          this.error = "Compte créé avec succès. Veuillez vous connecter.";
+          this.clearForm();
+          this.mode = "connexion";
+        } catch (err) {
+          console.log('error subscribe', err);
+          if (err.response.data.code === "ER_DUP_ENTRY") {
+            this.error = "Compte déjà existant !"
+          }
         }
-        result();
-        // this.performInscription();
       }
-    },
-    performConnexion() {
-      // Add your logic for login/authentication here
-    },
-    performInscription() {
-      if (this.password !== this.confirmPassword) {
-        // Passwords don't match, handle error
-      }
-      // Add your logic for user registration here
-    },
-
-  },
-
-
-
+    }
+  }
 };
 </script>
 
@@ -271,4 +269,11 @@ input:checked + .slider:before {
 
   content: "Admin"
 }
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
 </style>

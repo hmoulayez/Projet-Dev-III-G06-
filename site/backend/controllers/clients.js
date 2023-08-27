@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const fs = require("fs");
 const pool = mysql.createPool({
     host: '15.236.173.35',
@@ -10,7 +10,7 @@ const pool = mysql.createPool({
 
 
 // Fonction de contrôleur pour la souscription (inscription)
-exports.subscribe = (req, res) => {
+exports.subscribe = async (req, res) => {
     const nom = req.body.nom;
     const prenom = req.body.prenom;
     const email = req.body.email;
@@ -23,18 +23,24 @@ exports.subscribe = (req, res) => {
 
     // Exemple de requête d'insertion
     const sql = "INSERT INTO clients (nom, prénom, email, motdepasse,is_admin) VALUES (?, ?, ?, ?, ?)";
-    pool.getConnection((err, con) => {
-        if (err) throw err;
-        con.query(sql, [nom, prenom, email, motdepasse, is_admin], (err, result, fields) => {
-            con.release();
-            if (err) throw err;
-            res.json(result);
-        });
-    });
+    try {
+        const con = await pool.promise().getConnection();
+            try {
+                const [rows, fields] = await con.query(sql, [nom, prenom, email, motdepasse, is_admin]);
+                con.release();
+                console.log(rows);
+                res.json(rows);
+            } catch (queryError) {
+                res.status(500).json(queryError);
+                console.error('Query Error:', queryError);
+            }
+    } catch (connectionError) {
+        console.error('Connection Error:', connectionError);
+    }
 };
 
 // Fonction de contrôleur pour la connexion
-exports.connexion = (req, res) => {
+exports.connexion = async (req, res) => {
     const email = req.body.email;
     const motdepasse = req.body.motdepasse;
     const is_admin = req.body.is_admin;
@@ -45,21 +51,25 @@ exports.connexion = (req, res) => {
 
     // Exemple de requête de vérification (à des fins de démonstration)
     const sql = "SELECT * FROM clients WHERE email = ? AND motdepasse = ? AND is_admin = ?" ;
-    pool.getConnection((err, con) => {
-        if (err) throw err;
-        con.query(sql, [email, motdepasse, is_admin], (err, result, fields) => {
+    try {
+        const con = await pool.promise().getConnection();
+        try {
+            const [result, fields] = await con.query(sql, [email, motdepasse, is_admin]);
             con.release();
-            if (err) throw err;
-
             if (result.length > 0) {
                 // Connexion réussie
+                console.log("message:", result);
                 res.json({ message: "Connexion réussie" });
             } else {
                 // Connexion échouée
                 res.json({ message: "Identifiants incorrects" });
             }
-        });
-    });
+        } catch (queryError) {
+            console.error('Query Error:', queryError);
+        }
+    } catch (connectionError) {
+        console.error('Connection Error:', connectionError);
+    }
 };
 exports.getAllClients = (req, res) => {
     pool.getConnection((err, con) => {

@@ -87,7 +87,7 @@ export default {
     },
 
     recupCateg() {
-      axios.get('https://serveur.kaboricreations.com/categ')
+      axios.get('http://serveur.kaboricreations.com/categ')
           .then(response => {
             this.categ = response.data;
           })

@@ -13,9 +13,10 @@
             <img src="logo1.png" alt="Logo" id="logo1" />
           </router-link>
         </v-col>
-        <v-col cols="auto" >
+        <v-col cols="auto">
           <router-link to="/connexion" class="no-underline">
-            <v-btn color="yellow darken-2" >Se connecter</v-btn>
+            <v-btn v-if = "this.localStorageValue" color="yellow darken-2" @click="handleDeconnect">Déconnecter</v-btn>
+            <v-btn v-else color="yellow darken-2" >Se connecter</v-btn>
           </router-link>
         </v-col>
       </v-row>
@@ -37,7 +38,22 @@
 <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: "Entete",
+  data() {
+    return {
+      localStorageValue: null,
+    };
+  },
+  mounted() {
+    // Retrieve data from localStorage when the component is mounted
+    this.localStorageValue = localStorage.getItem('user');
+    console.log('this.localStorageValue', this.localStorageValue);
+  },
+  methods: {
+    handleDeconnect() {
+      localStorage.removeItem('user');
+      this.$router.push('/');
+    },
+  },
 }
 </script>
 

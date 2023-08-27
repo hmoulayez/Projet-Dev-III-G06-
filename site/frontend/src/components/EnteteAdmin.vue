@@ -10,6 +10,9 @@
           <li><router-link to="/modifcatalogue" class="no-underline">Ajouter Modèle</router-link></li>
           <li><router-link to="/ajouterCollectionCateg" class="no-underline">Ajouter Collection/Catégorie</router-link></li>
           <li><router-link to="/gestionCommandes" class="no-underline">Voir Commandes</router-link></li>
+          <li><router-link to="/connexion" class="no-underline">
+            <v-btn v-if = "this.localStorageValue" color="yellow darken-2" @click="handleDeconnect">Déconnecter</v-btn>
+          </router-link></li>
         </ul>
       </nav>
     </div>
@@ -20,6 +23,22 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "EnteteAdmin",
+  data() {
+    return {
+      localStorageValue: null,
+    };
+  },
+  mounted() {
+    // Retrieve data from localStorage when the component is mounted
+    this.localStorageValue = localStorage.getItem('user');
+    console.log('this.localStorageValue', this.localStorageValue);
+  },
+  methods: {
+    handleDeconnect() {
+      localStorage.removeItem('user');
+      this.$router.push('/');
+    },
+  },
 }
 </script>
 
@@ -54,5 +73,6 @@ export default {
 .no-underline {
   text-decoration: none;
   color: white;
+  margin-bottom: auto ;
 }
 </style>
